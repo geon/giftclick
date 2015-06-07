@@ -1,0 +1,274 @@
+@import 'cssreset-min.css';
+@import 'font-awesome-4.2.0.min.css';
+* {
+  font-family: inherit;
+  letter-spacing: inherit;
+}
+html {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif, FontAwesome;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  background: #f8f8f8 url(noise-3percent.png);
+}
+h1,
+h2,
+h3,
+p,
+hr {
+  margin-top: 1.5em;
+}
+h1 {
+  font-size: 1.5em;
+}
+h2 {
+  font-size: 1.25em;
+}
+h3 {
+  font-size: 1em;
+  font-weight: bold;
+}
+h3 + p {
+  margin-top: 0;
+}
+p {
+  line-height: 1.5em;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+img {
+  display: block;
+}
+button {
+  cursor: pointer;
+}
+.top-bar {
+  display: inline-block;
+  width: 100%;
+  background: #666666;
+  background: url(noise-3percent.png), -webkit-linear-gradient(bottom, #333333, #666666);
+  background: url(noise-3percent.png), linear-gradient(to top, #333333, #666666);
+  -webkit-font-smoothing: antialiased;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 #333333;
+  margin-bottom: 40px;
+}
+.top-bar a.back {
+  display: block;
+  font-size: 40px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-decoration: none;
+  color: inherit;
+  margin-left: 20px;
+}
+.top-bar > div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.top-bar > div .text {
+  margin: 0 20px;
+}
+.top-bar > div h1,
+.top-bar > div p {
+  margin: 5px 0;
+}
+.top-bar > div p {
+  opacity: .75;
+}
+.top-bar > .new-user button {
+  margin: 20px;
+}
+.top-bar > .existing-user {
+  display: none;
+}
+.top-bar.logged-in > .new-user {
+  display: none;
+}
+.top-bar.logged-in > .existing-user {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.overview {
+  margin: 0 100px;
+}
+.overview > .gifts {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.overview > .gifts > .gift {
+  margin: 10px 0;
+}
+.gift-type-page .gift-area {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.gift-type-page .gift-area button.want {
+  width: 220px;
+  height: 40px;
+  display: block;
+  margin-top: 20px;
+  position: relative;
+  border-radius: 5px;
+  font-size: 1.5em;
+  text-shadow: 0 1px 0 #ffffff;
+  box-shadow: inset 0px 0px 2px 0px #e9e0b8;
+  color: #333333;
+  background: #f5f1df -webkit-linear-gradient(bottom, #eee7c8, #f5f1df, #fcfbf6);
+  background: #f5f1df linear-gradient(to top, #eee7c8, #f5f1df, #fcfbf6);
+  border: 1px solid #ddcf91;
+}
+.gift-type-page .gift-area button.want > span.want,
+.gift-type-page .gift-area button.want > span.count-down {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 40px;
+  line-height: 40px;
+  -webkit-transition: opacity 0.2s;
+          transition: opacity 0.2s;
+}
+.gift-type-page .gift-area button.want > span.want {
+  opacity: 1;
+}
+.gift-type-page .gift-area button.want > span.count-down {
+  opacity: 0;
+}
+.gift-type-page .gift-area button.want.count-down > span.want {
+  opacity: 0;
+}
+.gift-type-page .gift-area button.want.count-down > span.count-down {
+  opacity: 1;
+}
+.gift-type-page .gift-area button.want:active {
+  background: #f5f1df;
+}
+.gift-type-page .gift-area button.want:focus {
+  outline: none;
+}
+.gift-type-page .gift-area button.want.out-of-stock,
+.gift-type-page .gift-area button.want.count-down {
+  text-shadow: 0 1px 0 #ffffff;
+  box-shadow: inset 0px 0px 2px 0px #dfdfdf;
+  color: #333333;
+  background: #f8f8f8 -webkit-linear-gradient(bottom, #e9e9e9, #f8f8f8, #ffffff);
+  background: #f8f8f8 linear-gradient(to top, #e9e9e9, #f8f8f8, #ffffff);
+  border: 1px solid #c5c5c5;
+  color: #bbb;
+  cursor: not-allowed;
+}
+.gift-type-page .gift-area button.want.out-of-stock:active,
+.gift-type-page .gift-area button.want.count-down:active {
+  background: #f8f8f8;
+}
+.gift-type-page .gift-area button.want.out-of-stock:focus,
+.gift-type-page .gift-area button.want.count-down:focus {
+  outline: none;
+}
+.gift {
+  width: 320px;
+}
+.gift p {
+  font-style: italic;
+  color: #888;
+}
+.gift .image {
+  width: 320px;
+  height: 240px;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+.gift .image > label {
+  position: absolute;
+  display: block;
+  width: 140px;
+  right: -30px;
+  top: 10px;
+  -webkit-transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
+          transform: rotate(30deg);
+  padding: 2px 0;
+  box-shadow: 0 1.3px 1px 0 rgba(0, 0, 0, 0.3);
+}
+.gift .image > label > span {
+  padding: 0 3px;
+  border: 1px dotted transparent;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  text-align: center;
+}
+.gift .image > label.outOfStock {
+  color: white;
+  background: #DF3112;
+  text-shadow: -0.6px -1px 0 rgba(0, 0, 0, 0.3);
+}
+.gift .image > label.outOfStock > span {
+  border-color: white;
+}
+.gift .image > label.outOfStock + a > img,
+.gift .image > label.outOfStock + a img {
+  opacity: 0.2;
+}
+.gift .image > label.stock {
+  color: #333;
+  background: #f5f1df;
+  text-shadow: 0.6px 1px 0 white;
+}
+.gift .image > label.stock > span {
+  border-color: #555;
+}
+.gift .image > a > img,
+.gift .image > img {
+  width: 320px;
+  height: 240px;
+}

@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	.gift-type-page
+
+		.gift-area
+			- giftTypeLinkImage = false;
+			- giftTypeShowDescription = true;
+			include giftType.include.jade
+
+			button(class = 'want' + (!giftType.batchStock ? ' out-of-stock' : ''))
+				span.want Vill ha!
+				span.count-down &#xf017; 59:54
+
+			//- button.want.count-down
+			//- 	span.want Vill ha!
+			//- 	span.count-down &#xf017; 59:54
+
+			//- button.want.out-of-stock
+			//- 	span.want Vill ha!

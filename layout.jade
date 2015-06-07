@@ -1,0 +1,28 @@
+block vars
+doctype html5
+head
+	link(rel='stylesheet', href='/css/style.css')
+	block css
+body
+
+	//- .top-bar.logged-in
+	.top-bar
+		.new-user
+			if !topLevel
+				a(href='/').back: span.icon.fa-chevron-circle-left
+			.text
+				h1 Är du ny här?
+				p Vi lottar ut presenter. Logga in med ditt Facebook-konto så missar du inga vinster.
+			button (f) Log in
+
+		.existing-user
+			if !topLevel
+				a(href='/').back: span.icon.fa-chevron-circle-left
+			.text
+				h1 Hej, {{user.name}}!
+				p Du har {{user.klicksLeft}} klick kvar idag.
+
+	block content
+
+	script(src='/js/vendor/jquery-2.1.3.min.js')
+	block js

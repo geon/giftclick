@@ -1,0 +1,427 @@
+
+@background-color: #f8f8f8;
+@top-bar-color: #666;
+
+@text-color-dark: #333;
+@text-color-light: #fff;
+
+@font-size: 16px;
+@line-height: 1.5em;
+
+@color-cream: #F5F1DF;
+
+
+
+
+// Mixins
+
+.return-contrasting-color(@color, @dark: @text-color-dark, @light: @text-color-light) when (luma(@color) > 50%) {
+	@contrasting-color: @dark;
+}
+.return-contrasting-color(@color, @dark: @text-color-dark, @light: @text-color-light) when (luma(@color) =< 50%) {
+	@contrasting-color: @light;
+}
+.contrasting-color(@color, @dark: @text-color-dark, @light: @text-color-light) when (luma(@color) > 50%) {
+
+	color: @dark;
+}
+.contrasting-color(@color, @dark: @text-color-dark, @light: @text-color-light) when (luma(@color) =< 50%) {
+
+	// Webkit on OS X has a rendering bug, causing light text on dark to be slightly bolder. (Not just the illusion.)
+	// https://web.archive.org/web/20131019233655/http://tanookilabs.com/your-fonts-look-bad-in-chrome-heres-the-fix
+	-webkit-font-smoothing: antialiased;
+
+	color: @light;
+}
+.contrasting-color-faded(@color, @amount: 75%, @dark: @text-color-dark, @light: @text-color-light) {
+
+	.contrasting-color(@color, fade(@dark, @amount), fade(@light, @amount));
+}
+.contrasting-color-mixed(@color, @amount: 75%, @dark: @text-color-dark, @light: @text-color-light) {
+
+	.contrasting-color(@color, mix(@dark, @color, @amount), mix(@light, @color, @amount));
+}
+
+.letterpress(@background-color, @letterpress-amount: 10%) {
+
+	& when (luma(@background-color) > 50%) {
+
+		text-shadow: 0 1px 0 lighten(@background-color, @letterpress-amount);
+		box-shadow: inset 0px 0px 2px 0px darken(@background-color, @letterpress-amount);
+	}
+	& when (luma(@background-color) <= 50%) {
+
+		text-shadow: 0 -1px 0 darken(@background-color, @letterpress-amount);
+	}	
+}
+
+
+@import (css) 'cssreset-min.css';
+@import (css) 'font-awesome-4.2.0.min.css';
+
+// Set global font for everything.
+* {
+
+	font-family: inherit;
+	font-family: inherit;
+	letter-spacing: inherit;
+}
+
+html {
+
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif, FontAwesome;
+	font-size: @font-size;
+	letter-spacing: 0.03em; // The font is just a *tiiiny* bit too cramped.
+
+	background: @background-color url(noise-3percent.png);
+}
+
+body {
+
+}
+
+h1, h2, h3, p, hr {
+
+	margin-top: @line-height;
+}
+
+h1 {
+
+	font-size: 1.5em;
+}
+
+h2 {
+
+	font-size: 1.25em;
+}
+
+h3 {
+
+	font-size: 1em;
+	font-weight: bold;
+}
+
+h3 + p {
+
+	margin-top: 0;
+}
+
+p {
+
+	line-height: @line-height;
+}
+
+a {
+
+	// TODO: color
+	text-decoration: none;
+
+	&:hover {
+
+		text-decoration: underline;
+	}
+}
+
+img {
+
+	display: block;
+}
+
+button {
+
+	cursor: pointer;
+}
+
+
+
+.top-bar {
+
+	// Fixes the collapsed top margin.
+	display: inline-block;
+	width: 100%;
+
+	background: @top-bar-color;
+	background: url(noise-3percent.png), linear-gradient(to top, darken(@top-bar-color, 20%), @top-bar-color);
+	.contrasting-color(@top-bar-color);
+	.letterpress(@top-bar-color, 20%);
+
+	margin-bottom: 40px;
+
+	a.back {
+
+		@size: 35px;
+
+		display: block;
+		font-size: 40px;
+		width: @size;
+		height: @size;
+		line-height: @size;
+
+		text-decoration: none;
+		color: inherit;
+
+		margin-left: 20px;
+	}
+	
+	> div {
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.text {
+
+			margin: 0 20px;
+		}
+
+		h1, p {
+
+			margin: 5px 0;
+		}
+
+		p {
+
+			opacity: .75;
+		}
+	}
+
+	> .new-user {
+		
+		// p Vi lottar ut presenter. Logga in med ditt Facebook-konto, så missar du inga vinster.
+		button {
+
+			margin: 20px;
+		}
+	}
+
+	> .existing-user {
+		// h1 Hej, {{user.name}}!
+		// p Du har {{user.klicksLeft}} klick kvar idag.
+	}
+
+	// Toggling by logged-in class.
+	> .existing-user { display: none; }
+	&.logged-in {
+
+		> .new-user      { display: none; }
+		> .existing-user { display: flex;
+
+			justify-content: flex-start;
+		}
+	}
+}
+
+
+.overview {
+
+	margin: 0 100px;
+
+	p.instructions {
+
+
+	}
+
+	> .gifts {
+
+		display: flex;
+		// flex-direction: column;
+
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+
+		> .gift {
+
+			margin: 10px 0;
+		}
+	}
+}
+
+
+.gift-type-page {
+
+
+	.gift-area {
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+
+		// > .gift {
+
+		// }
+
+		p.description {
+
+		}
+
+		button.want {
+
+			@width: 220px;
+			@height: 40px;
+
+			width: @width;
+			height: @height;
+			display: block;
+
+			margin-top: 20px;
+
+			position: relative;
+
+			> span.want,
+			> span.count-down {
+
+				display: block;
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: @width;
+				height: @height;
+				line-height: @height;
+				transition: opacity 0.2s;
+			}
+
+			> span.want {
+				opacity: 1;
+			}
+
+			> span.count-down {
+				opacity: 0;
+			}
+
+			&.count-down {
+
+				> span.want {
+					opacity: 0;
+				}
+
+				> span.count-down {
+					opacity: 1;
+				}
+			}
+
+			border-radius: 5px;
+			font-size: 1.5em;
+			.color (@color) {
+
+				@bulge: 6%;
+				.letterpress(@color);
+				.contrasting-color(@color);
+				background: @color linear-gradient(to top, darken(@color, @bulge), @color, lighten(@color, @bulge));
+				border: 1px solid darken(@color, 20%);
+
+				&:active {
+
+					background: @color;
+				}
+
+				&:focus {
+
+					outline: none;
+				}
+			}
+
+			.color (@color-cream);
+
+			&.out-of-stock,
+			&.count-down {
+
+				.color (#f8f8f8);
+				color: #bbb;
+				cursor: not-allowed;
+			}
+		}
+	}
+}
+
+
+.gift {
+
+	@image-width: 320px;
+	@image-height: 240px;
+
+	width: @image-width;
+
+	p {
+		font-style: italic;
+		color: #888;
+		// text-align: center;
+	}
+
+	.image {
+
+		width: @image-width;
+		height: @image-height;
+
+		border-radius: 10px;
+		box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+		overflow: hidden;
+
+		position: relative;
+
+		> label {
+
+			position: absolute;
+			display: block;
+			width: 140px;
+			right: -30px;
+			top: 10px;
+			transform: rotate(30deg);
+
+			padding: 2px 0;
+			box-shadow: 0 1.3px 1px 0 rgba(0, 0, 0, 0.3);
+
+			> span {
+
+				padding: 0 3px;
+				border: 1px dotted transparent;
+				border-left: 0;
+				border-right: 0;
+
+				display: block;
+				text-align: center;
+			}
+
+
+			&.outOfStock {
+
+				color: white;
+				background: #DF3112;
+				text-shadow: -0.6px -1px 0 rgba(0, 0, 0, 0.3);
+
+				> span {
+
+					border-color: white;
+				}
+
+				& + a > img,
+				& + a img {
+
+					opacity: 0.2;
+				}
+			}
+
+			&.stock {
+
+				color: #333;
+				background: @color-cream;
+				text-shadow: 0.6px 1px 0 white;
+
+				> span {
+
+					border-color: #555;
+				}
+			}
+
+		}
+
+		> a > img,
+		> img {
+
+			width: @image-width;
+			height: @image-height;
+		}
+	}
+}

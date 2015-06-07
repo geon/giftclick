@@ -1,0 +1,13 @@
+.gift
+	.image
+		if (giftType.batchStock)
+			label.stock: span= giftType.batchStock
+				|  kvar
+		else
+			label.outOfStock: span Slut
+		if giftTypeLinkImage
+			a(href='/gifts/'+giftType.sku): img(src='/gifts/'+giftType.sku+'/640x480.jpg')
+		else
+			img(src='/gifts/'+giftType.sku+'/640x480.jpg')
+	if giftTypeShowDescription
+		p= giftType.description

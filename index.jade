@@ -1,0 +1,19 @@
+extends layout
+
+block vars
+	- topLevel = true;
+
+block content
+	.overview
+
+		.instructions
+			p Klicka på de presenter du vill ha. Fler klick ger större vinstchans i utlottningen. Titta in ofta. Presenterna försvinner snabbt!
+
+		.gifts
+			- giftTypeLinkImage = true;
+			- giftTypeShowDescription = false;
+			each giftType in giftTypes
+				include giftType.include.jade
+
+block js
+	script(src='js/main.js')
