@@ -22,6 +22,12 @@ var jadeTargets = {
 			src: 'index.jade',
 			dest: 'index.html'
 		}]
+	},
+	privacyPolicy: {
+		files: [{
+			src: 'privacyPolicy.jade',
+			dest: 'integritetspolicy.html'
+		}]
 	}
 };
 
