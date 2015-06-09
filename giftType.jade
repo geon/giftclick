@@ -1,5 +1,14 @@
 extends layout
 
+block meta
+
+	// Per page Facebook sharing metadata.
+	meta(property='og:type'        content='product')
+	meta(property='og:url'         content='http://giftclick.se/gifts/'+giftType.sku+'/')
+	meta(property='og:title'       content='Gratis present!')
+	meta(property='og:description' content=giftType.description)
+	meta(property='og:image'       content='http://giftclick.se/gifts/'+giftType.sku+'/640x480.jpg')
+
 block content
 	.gift-type-page
 
@@ -18,3 +27,5 @@ block content
 
 			//- button.want.out-of-stock
 			//- 	span.want Vill ha!
+
+			div.fb-like(data-send='true', data-width='450' data-show-faces='true')

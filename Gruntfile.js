@@ -5,16 +5,15 @@ var giftTypes = require('./giftTypes.json')
 		return giftType.batchStock || new Date(giftType.timeRanOut) > new Date(new Date().getTime() - 2*24*3600*1000);
 	});
 
+var fbAppId = '1426084277715046';
 var jadeTargets = {
 	options: {
-		data: {
-			pretty: true,
-			debug: true,
-		}
+		// pretty: true
 	},
 	index: {
 		options: {
 			data: {
+				fbAppId: fbAppId,
 				giftTypes: giftTypes
 			}
 		},
@@ -37,6 +36,7 @@ giftTypes
 		jadeTargets[giftType.sku] = {
 			options: {
 				data: {
+					fbAppId: fbAppId,
 					giftType: giftType
 				}
 			},

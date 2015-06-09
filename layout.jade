@@ -6,10 +6,34 @@ head
 	meta(name='keywords', content='present, gratis, click')
 	meta(name='description', content='Vi lottar ut presenter. Klicka på de presenter du vill ha. Titta in ofta, presenterna försvinner snabbt!')
 	meta(name='viewport', content='width = device-width, initial-scale = 1.0')
+	// Site wide Facebook sharing metadata.
+	meta(property='og:fb:app_id'   content=fbAppId)
+	meta(property='og:site_name'   content='GiftClick.se')
+	meta(property='og:locale'      content='sv_SE')
+	block meta
 
 	link(rel='stylesheet', href='/css/style.css')
 	block css
 body
+
+	//- Facebook SDK
+	script.
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '!{fbAppId}',
+				xfbml      : false, // No share buttons etc.
+				version    : 'v2.3',
+				status     : true // Logs in at once.
+			});
+		};
+
+		(function(d, s, id){
+			 var js, fjs = d.getElementsByTagName(s)[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement(s); js.id = id;
+			 js.src = "//connect.facebook.net/sv_SE/sdk.js";
+			 fjs.parentNode.insertBefore(js, fjs);
+		 }(document, 'script', 'facebook-jssdk'));
 
 	//- .top-bar.logged-in
 	.top-bar
