@@ -294,7 +294,6 @@ button {
 				width: @width;
 				height: @height;
 				line-height: @height;
-				transition: opacity 0.2s;
 			}
 
 			> span.want {
@@ -350,6 +349,17 @@ button {
 				.color (#f8f8f8);
 				color: #bbb;
 				cursor: not-allowed;
+			}
+
+			@transition-time: 0.4s;
+			// Background is not animatable.
+			transition: color @transition-time linear;
+			> span.want       { transition: opacity @transition-time linear @transition-time/2; }
+			> span.count-down { transition: opacity @transition-time/2 linear; }
+			&.out-of-stock,
+			&.count-down {
+				> span.want       { transition: opacity @transition-time/2 linear; }
+				> span.count-down { transition: opacity @transition-time/2 linear @transition-time/2; }
 			}
 		}
 	}
