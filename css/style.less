@@ -47,7 +47,6 @@
 	& when (luma(@background-color) > 50%) {
 
 		text-shadow: 0 1px 0 lighten(@background-color, @letterpress-amount);
-		box-shadow: inset 0px 0px 2px 0px darken(@background-color, @letterpress-amount);
 	}
 	& when (luma(@background-color) <= 50%) {
 
@@ -311,6 +310,11 @@ button {
 				.contrasting-color(@color);
 				background: @color linear-gradient(to top, darken(@color, @bulge), @color, lighten(@color, @bulge));
 				border: 1px solid darken(@color, 20%);
+				& when (luma(@color) > 50%) {
+
+					text-shadow: 0 1px 0 lighten(@color, 10%);
+					box-shadow: inset 0px 0px 2px 0px darken(@color, 10%);
+				}
 
 				&:active {
 
