@@ -1,0 +1,45 @@
+[
+	{
+		"sku": "CBR834",
+		"description": "Stora blanka länkar av silverfärgad och svartlackerad metall. Längd 21 cm.",
+		"batchStock": 5
+	},
+
+	{
+		"sku": "CBR833",
+		"description": "Stora blanka länkar av silverfärgad och svartlackerad metall. Längd 22 cm.",
+		"batchStock": 2
+	},
+
+	{
+		"sku": "CBR1187",
+		"description": "Genomskinlig krackelerad plast med mönstrad yta och försilvrad insida. Diameter 65 mm, bredd 25 mm. Blandade färger.",
+		"batchStock": 3
+	},
+
+	{
+		"sku": "CBR1222",
+		"description": "7-pack ringar i guldfärgad metall och grön eller lila lack. Diameter 65 mm, bredd 2 resp. 5 mm.",
+		"batchStock": 0,
+		"timeRanOut": "2015-06-06"
+	},
+
+	{
+		"sku": "CBR1083",
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm. Blandaded färger.",
+		"batchStock": 2,
+		"timeRanOut": "2015-05-01"
+	},
+
+	{
+		"sku": "CNK1255",
+		"description": "Långt halsband med runda plattor av färgad pärlemor. Längd 140 cm. Blandade färger.",
+		"batchStock": 5
+	},
+
+	{
+		"sku": "CBR896",
+		"description": "Silverfärgat armband i präglad eller hamrad metallplåt. Diameter 67 mm, bredd 35mm.",
+		"batchStock": 1
+	}
+]
