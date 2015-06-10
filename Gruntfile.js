@@ -6,6 +6,11 @@ var giftTypes = require('./giftTypes.json')
 	});
 
 var fbAppId = '1426084277715046';
+
+var adrecordAds = require('./adrecord-ads.json');
+var shuffle = require('shuffle-array');
+shuffle(adrecordAds);
+
 var jadeTargets = {
 	options: {
 		// pretty: true
@@ -37,7 +42,8 @@ giftTypes
 			options: {
 				data: {
 					fbAppId: fbAppId,
-					giftType: giftType
+					giftType: giftType,
+					adrecordAd: adrecordAds.pop()
 				}
 			},
 			files: [{

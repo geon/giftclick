@@ -17,15 +17,11 @@ block content
 			- giftTypeShowDescription = true;
 			include giftType.include.jade
 
+			//- button.want.count-down
 			button(class = 'want' + (!giftType.batchStock ? ' out-of-stock' : ''))
 				span.want Vill ha!
 				span.count-down &#xf017; 59:54
 
-			//- button.want.count-down
-			//- 	span.want Vill ha!
-			//- 	span.count-down &#xf017; 59:54
-
-			//- button.want.out-of-stock
-			//- 	span.want Vill ha!
-
 			div.fb-like(data-send='true', data-width='450' data-show-faces='true')
+
+			a.ad(href='http://click.adrecord.com/?p='+adrecordAd.p+'&c=20202&g='+adrecordAd.g+'&epi='+giftType.sku rel='nofollow'): img(src='http://graphics.adrecord.com/20202/'+adrecordAd.p+'/'+adrecordAd.g)
