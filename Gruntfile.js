@@ -2,14 +2,20 @@
 var giftTypes = require('./giftTypes.json')
 	.filter(function (giftType) {
 
-		return giftType.batchStock || new Date(giftType.timeRanOut) > new Date(new Date().getTime() - 2*24*3600*1000);
+		return (giftType.stock && giftType.batchStock) || new Date(giftType.timeRanOut) > new Date(new Date().getTime() - 2*24*3600*1000);
 	});
+
+giftTypes.forEach(function (giftType) {
+
+	giftType.batchStock = giftType.stock;
+});
 
 var fbAppId = '1426084277715046';
 
 var adrecordAds = require('./adrecord-ads.json');
 var shuffle = require('shuffle-array');
 shuffle(adrecordAds);
+var adrecordAdsIndex = 0;
 
 var jadeTargets = {
 	options: {
@@ -43,7 +49,7 @@ giftTypes
 				data: {
 					fbAppId: fbAppId,
 					giftType: giftType,
-					adrecordAd: adrecordAds.pop()
+					adrecordAd: adrecordAds[adrecordAdsIndex++ % adrecordAds.length]
 				}
 			},
 			files: [{
