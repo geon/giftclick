@@ -1,45 +1,514 @@
 [
 	{
-		"sku": "CBR834",
-		"description": "Stora blanka länkar av silverfärgad och svartlackerad metall. Längd 21 cm.",
-		"batchStock": 5
+		"sku": "CBR1222 - Lila",
+		"batchStock": 1,
+		"stock": 7,
+		"description": "7-pack ringar i guldfärgad metall och lila lack. Diameter 65 mm, bredd 2 resp. 5 mm.",
+		"imageFileName": "IMG_1326.jpg"
 	},
-
 	{
-		"sku": "CBR833",
+		"sku": "CBR1222 - Grön",
+		"batchStock": 1,
+		"stock": 9,
+		"description": "7-pack ringar i guldfärgad metall och grön lack. Diameter 65 mm, bredd 2 resp. 5 mm.",
+		"imageFileName": "aIMG_1320.jpg"
+	},
+	{
+		"sku": "CNK1172",
+		"batchStock": 1,
+		"stock": 7,
+		"description": "Kedja med små svarta pärlor och ett större blomliknande hänge med svarta kronblad och glittriga stenar. Längd 51 cm. Hängets diameter 5 cm. ",
+		"imageFileName": "IMG_1493.jpg"
+	},
+	{
+		"sku": "CNK1376 - Brun",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Naturlig look med runda plattor av betsat trä och pärlemor, silverfärgade kulor och svarta kedjor. Längd 98 cm.",
+		"imageFileName": "IMG_1473.jpg"
+	},
+	{
+		"sku": "CNK1376 - Orange",
+		"batchStock": 1,
+		"stock": 10,
+		"description": "Naturlig look med runda plattor av betsat trä och pärlemor, silverfärgade kulor och svarta kedjor. Längd 98 cm.",
+		"imageFileName": "IMG_1475.jpg"
+	},
+	{
+		"sku": "CNK1376 - Natur",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Naturlig look med runda plattor av betsat trä och pärlemor, silverfärgade kulor och svarta kedjor. Längd 98 cm.",
+		"imageFileName": "IMG_1490.jpg"
+	},
+	{
+		"sku": "CNK1376 - Grön",
+		"batchStock": 1,
+		"stock": 6,
+		"description": "Naturlig look med runda plattor av betsat trä och pärlemor, silverfärgade kulor och svarta kedjor. Längd 98 cm.",
+		"imageFileName": "IMG_1466.jpg"
+	},
+	{
+		"sku": "CNK1376 - Svart",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Naturlig look med runda plattor av betsat trä och pärlemor, silverfärgade kulor och svarta kedjor. Längd 98 cm.",
+		"imageFileName": "IMG_1482.jpg"
+	},
+	{
+		"sku": "CNK1374 - Delfin",
+		"batchStock": 1,
+		"stock": 7,
+		"description": "Högglansigt svart hänge i form av en delfin, kantat av stenar. Rem av gummi. Längd 58 cm.",
+		"imageFileName": "IMG_1500.jpg"
+	},
+	{
+		"sku": "CNK1374 - Droppe",
+		"batchStock": 1,
+		"stock": 7,
+		"description": "Droppformat hänge i högglansig svart lack, kantat av stenar. Rem av gummi. Längd 58 cm.",
+		"imageFileName": "aIMG_1504.jpg"
+	},
+	{
+		"sku": "CNK1371 - Stjärna",
+		"batchStock": 1,
+		"stock": 14,
+		"description": "Svart stjärna med 11 stenar. Rem av gummi. Längd 56 cm.",
+		"imageFileName": "IMG_1451.jpg"
+	},
+	{
+		"sku": "CBR833 - Ringar",
+		"batchStock": 1,
+		"stock": 18,
 		"description": "Stora blanka länkar av silverfärgad och svartlackerad metall. Längd 22 cm.",
-		"batchStock": 2
+		"imageFileName": "IMG_1295.jpg"
+	},
+	{
+		"sku": "CBR834 - Rektanglar",
+		"batchStock": 1,
+		"stock": 7,
+		"description": "Stora blanka länkar av silverfärgad och svartlackerad metall. Längd 21 cm.",
+		"imageFileName": "aIMG_1299.jpg"
+	},
+	{
+		"sku": "CNK1255 - Grön",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Långt halsband med runda plattor av färgad pärlemor. Längd 140 cm.",
+		"imageFileName": "IMG_1431.jpg"
+	},
+	{
+		"sku": "CNK1255 - Ceris",
+		"batchStock": 1,
+		"stock": 4,
+		"description": "Långt halsband med runda plattor av färgad pärlemor. Längd 140 cm.",
+		"imageFileName": "IMG_1429.jpg"
+	},
+	{
+		"sku": "CNK1255 - Turkos",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Långt halsband med runda plattor av färgad pärlemor. Längd 140 cm.",
+		"imageFileName": "IMG_1433.jpg"
+	},
+	{
+		"sku": "CBR1083 - Vit",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1277.jpg"
+	},
+	{
+		"sku": "CBR1083 - Gul",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1272.jpg"
+	},
+	{
+		"sku": "CBR1083 - Orange",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1276.jpg"
+	},
+	{
+		"sku": "CBR1083 - Lavendel",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1275.jpg"
+	},
+	{
+		"sku": "CBR1083 - Grön",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1279.jpg"
+	},
+	{
+		"sku": "CBR1083 - Rosa",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1280.jpg"
+	},
+	{
+		"sku": "CBR1083 - Ceris",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1278.jpg"
+	},
+	{
+		"sku": "CBR1083 - Röd",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1273.jpg"
+	},
+	{
+		"sku": "CBR1083 - Turkos",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm.",
+		"imageFileName": "IMG_1274.jpg"
+	},
+	{
+		"sku": "CBR920",
+		"batchStock": 1,
+		"stock": 18,
+		"description": "Brunbetsat trä och pärlemor med silverfärgade metallringar och glittrande vit sten. Längd 7 cm.",
+		"imageFileName": "IMG_1303.jpg"
+	},
+	{
+		"sku": "CNK958",
+		"batchStock": 1,
+		"stock": 10,
+		"description": "Långt halsband med guldfärgade pärlor i  två storlekar och glansig textil. Längd 90 cm.",
+		"imageFileName": "IMG_1506.jpg"
+	},
+	{
+		"sku": "CBR789 - Lila",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Krusiga och släta metallkulor tillsammans med färgade pärlimitationer på silverfärgad kedja med justerbar längd. Maxlängd 23,5 cm",
+		"imageFileName": "IMG_1311.jpg"
+	},
+	{
+		"sku": "CBR789 - Brons",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Krusiga och släta metallkulor tillsammans med brons och honungs-färgade pärlimitationer på silverfärgad kedja med justerbar längd. Maxlängd 23,5 cm",
+		"imageFileName": "aIMG_1316.jpg"
+	},
+	{
+		"sku": "CBR789 - Rosa",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Krusiga och släta metallkulor tillsammans med färgade pärlimitationer på silverfärgad kedja med justerbar längd. Maxlängd 23,5 cm",
+		"imageFileName": "IMG_1308.jpg"
+	},
+	{
+		"sku": "CBR1113 - Lila",
+		"batchStock": 1,
+		"stock": 7,
+		"description": "Handgjort hänge i färgad lera med fastpressade metalldetaljer. Tjock virkad rem med lila och lavendelfärgade pärlor monterade i klasar från gjutna metallfästen med mönster. Justerbar rem. Maxlängd 24 cm.",
+		"imageFileName": "IMG_1335.jpg"
+	},
+	{
+		"sku": "CBR1113 - Blå",
+		"batchStock": 1,
+		"stock": 10,
+		"description": "Handgjort hänge i färgad lera med fastpressade metalldetaljer. Tjock virkad rem med genomskinliga pärlor monterade i klasar från gjutna metallfästen med mönster. Justerbar rem. Maxlängd 24 cm.",
+		"imageFileName": "aIMG_1337.jpg"
+	},
+	{
+		"sku": "CBR1248 - Grön",
+		"batchStock": 1,
+		"stock": 10,
+		"description": "Två handgjorda hängen i lera med fastpressade metalldetaljer. Plattor av färgad pärlemor och genomskinliga pärlor som metalliserats över halva ytan. Justerbar rem. Maxlängd 20 cm.",
+		"imageFileName": "IMG_1339.jpg"
+	},
+	{
+		"sku": "CBR1248 - Röd",
+		"batchStock": 1,
+		"stock": 9,
+		"description": "Två handgjorda hängen i lera med fastpressade metalldetaljer. Plattor av färgad pärlemor och genomskinliga pärlor som metalliserats över halva ytan. Justerbar rem. Maxlängd 20 cm.",
+		"imageFileName": "aIMG_1343.jpg"
+	},
+	{
+		"sku": "CBR1258 - Guld",
+		"batchStock": 1,
+		"stock": 17,
+		"description": "Handgjort hänge i lera med fastpressade metalldetaljer. Mjukt rundade stjärnor och genomskinliga pärlor som metalliserats över halva ytan. Justerbar rem. Maxlängd 20,5 cm.",
+		"imageFileName": "IMG_1347.jpg"
+	},
+	{
+		"sku": "CNK195 - Bärnsten",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Stort hänge i marmorerad halvgenomskinlig plast och bronsfärgad metall. Stora halvgenomskinliga pärlor med glitter och bronsfärgade avskiljare. Längd 80 cm.",
+		"imageFileName": "IMG_1412.jpg"
+	},
+	{
+		"sku": "CNK195 - Röd",
+		"batchStock": 1,
+		"stock": 10,
+		"description": "Stort hänge i marmorerad halvgenomskinlig plast och bronsfärgad metall. Stora halvgenomskinliga pärlor med glitter och bronsfärgade avskiljare. Längd 80 cm.",
+		"imageFileName": "IMG_1413.jpg"
+	},
+	{
+		"sku": "CNK195 - Turkos",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "Stort hänge i marmorerad halvgenomskinlig plast och bronsfärgad metall. Stora halvgenomskinliga pärlor med glitter och bronsfärgade avskiljare. Längd 80 cm.",
+		"imageFileName": "IMG_1411.jpg"
+	},
+	{
+		"sku": "CNK1163 - Brun",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Halsband av flera trådar med betsade träpärlor och genomskinliga plastpärlor. Stort, hjärtformat hänge i halvgenomskinlig plast med ingjutet glitter och metallinfästning med flera färgade stenar. Längd 55 cm.",
+		"imageFileName": "IMG_1396.jpg"
+	},
+	{
+		"sku": "CNK1163 - Grön",
+		"batchStock": 1,
+		"stock": 6,
+		"description": "Halsband av flera trådar med betsade träpärlor och genomskinliga plastpärlor. Stort, hjärtformat hänge i halvgenomskinlig plast med ingjutet glitter och metallinfästning med flera färgade stenar. Längd 55 cm.",
+		"imageFileName": "aIMG_1393.jpg"
+	},
+	{
+		"sku": "CNK1163 - Röd",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Halsband av flera trådar med betsade träpärlor och genomskinliga plastpärlor. Stort, hjärtformat hänge i halvgenomskinlig plast med ingjutet glitter och metallinfästning med flera färgade stenar. Längd 55 cm.",
+		"imageFileName": "aIMG_1395.jpg"
+	},
+	{
+		"sku": "CER1263 - c",
+		"batchStock": 1,
+		"stock": 10,
+		"description": "Brunbetsat trä och pärlemor. Längd 6 cm.",
+		"imageFileName": "IMG_1337.jpg"
+	},
+	{
+		"sku": "CER1263 - b",
+		"batchStock": 1,
+		"stock": 11,
+		"description": "Brunbetsat trä och pärlemor. Längd 6 cm.",
+		"imageFileName": "IMG_1356.jpg"
+	},
+	{
+		"sku": "CER1263 - a",
+		"batchStock": 1,
+		"stock": 7,
+		"description": "Brunbetsat trä och pärlemor med silverfärgade metallringar och glittrande vit sten. Längd 7 cm.",
+		"imageFileName": "IMG_1357.jpg"
+	},
+	{
+		"sku": "CER1246",
+		"batchStock": 1,
+		"stock": 8,
+		"description": "Brunbestat trä och pärlemor. Längd 7 cm.",
+		"imageFileName": "IMG_1355.jpg"
+	},
+	{
+		"sku": "CNK601 - Grön",
+		"batchStock": 1,
+		"stock": 4,
+		"description": "Mysigt halsband med flera intressanta detaljer. Små stjärnor i metall, loopar med mindre pärlor och låset fram. Längd 50 cm.",
+		"imageFileName": "IMG_1406.jpg"
+	},
+	{
+		"sku": "CNK601 - Svart",
+		"batchStock": 1,
+		"stock": 7,
+		"description": "Mysigt halsband med flera intressanta detaljer. Små stjärnor i metall, loopar med mindre pärlor och låset fram. Längd 50 cm.",
+		"imageFileName": "IMG_1401.jpg"
+	},
+	{
+		"sku": "CNK956 - Grön & Brun",
+		"batchStock": 1,
+		"stock": 4,
+		"description": "Långt halsband med textil och två sorters pärlor i grönt och brunt. Längd 150 cm.",
+		"imageFileName": "IMG_1459.jpg"
+	},
+	{
+		"sku": "CNK956 - Röd",
+		"batchStock": 1,
+		"stock": 5,
+		"description": "Stora, marmorerade pärlor, två sorters röda pärlor och röd spets i ett långt halsband. Längd 150 cm.",
+		"imageFileName": "IMG_1454.jpg"
+	},
+	{
+		"sku": "CBR896 - Präglad",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Silverfärgad metallplåt med präglat mönster. Diameter 67 mm, bredd 35mm.",
+		"imageFileName": "IMG_1284.jpg"
+	},
+	{
+		"sku": "CBR896 - Hamrad",
+		"batchStock": 1,
+		"stock": 6,
+		"description": "Silverfärgat armband i hamrad metallplåt. Diameter 67 mm, bredd 35mm.",
+		"imageFileName": "IMG_1286.jpg"
+	},
+	{
+		"sku": "CNK1253 - Lingon",
+		"batchStock": 1,
+		"stock": 10,
+		"description": "Riktigt fint halsband med bladformade brickor och pärlor monterade i klasar, så att de liknar bär. Längd 58 cm.",
+		"imageFileName": "IMG_1377.jpg"
+	},
+	{
+		"sku": "CNK1253 - Blåbär",
+		"batchStock": 1,
+		"stock": 5,
+		"description": "Riktigt fint halsband med bladformade brickor och pärlor monterade i klasar, så att de liknar bär. Längd 58 cm.",
+		"imageFileName": "aIMG_1379.jpg"
+	},
+	{
+		"sku": "CNK1253 - Grön",
+		"batchStock": 1,
+		"stock": 6,
+		"description": "Riktigt fint halsband med bladformade brickor och pärlor monterade i klasar, så att de liknar bär. Längd 58 cm.",
+		"imageFileName": "aIMG_1375.jpg"
+	},
+	{
+		"sku": "CBR910 - Brons",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Halva glaskulor på metallfärgade länkar. Armbandet är flexibelt och passar alla storlekar. De breda länkarna sprider trycket över handleden och gör det mycket bekvämt att bära. Diameter 5 cm, bredd 5 cm.",
+		"imageFileName": "IMG_1254.jpg"
+	},
+	{
+		"sku": "CBR910 - Bärnsten",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "Halva glaskulor på metallfärgade länkar. Armbandet är flexibelt och passar alla storlekar. De breda länkarna sprider trycket över handleden och gör det mycket bekvämt att bära. Diameter 5 cm, bredd 5 cm.",
+		"imageFileName": "aIMG_1256.jpg"
+	},
+	{
+		"sku": "CBR910 - Mörkgrön",
+		"batchStock": 1,
+		"stock": 2,
+		"description": "Halva glaskulor på metallfärgade länkar. Armbandet är flexibelt och passar alla storlekar. De breda länkarna sprider trycket över handleden och gör det mycket bekvämt att bära. Diameter 5 cm, bredd 5 cm.",
+		"imageFileName": "aIMG_1253.jpg"
+	},
+	{
+		"sku": "CBR910 - Ljusgrön",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Halva glaskulor på metallfärgade länkar. Armbandet är flexibelt och passar alla storlekar. De breda länkarna sprider trycket över handleden och gör det mycket bekvämt att bära. Diameter 5 cm, bredd 5 cm.",
+		"imageFileName": "aIMG_1248.jpg"
+	},
+	{
+		"sku": "CBR910 - Silver",
+		"batchStock": 1,
+		"stock": 0,
+		"description": "Halva glaskulor på metallfärgade länkar. Armbandet är flexibelt och passar alla storlekar. De breda länkarna sprider trycket över handleden och gör det mycket bekvämt att bära. Diameter 5 cm, bredd 5 cm.",
+		"imageFileName": "aIMG_1251.jpg"
+	},
+	{
+		"sku": "CER1250",
+		"batchStock": 1,
+		"stock": 12,
+		"description": "Brunbestat trä och pärlemor. Längd 5 cm.",
+		"imageFileName": "IMG_1358.jpg"
+	},
+	{
+		"sku": "CBR1187 - Ljusblå",
+		"batchStock": 1,
+		"stock": 4,
+		"description": "Genomskinlig krackelerad plast med mönstrad yta och försilvrad insida. Diameter 65 mm, bredd 25 mm.",
+		"imageFileName": "IMG_1268.jpg"
+	},
+	{
+		"sku": "CBR1187 - Lila",
+		"batchStock": 1,
+		"stock": 2,
+		"description": "Genomskinlig krackelerad plast med mönstrad yta och försilvrad insida. Diameter 65 mm, bredd 25 mm.",
+		"imageFileName": "IMG_1266.jpg"
+	},
+	{
+		"sku": "CBR1187 - Brun",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "Genomskinlig krackelerad plast med mönstrad yta och försilvrad insida. Diameter 65 mm, bredd 25 mm.",
+		"imageFileName": "IMG_1267.jpg"
+	},
+	{
+		"sku": "CBR1187 - Orange",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "Genomskinlig krackelerad plast med mönstrad yta och försilvrad insida. Diameter 65 mm, bredd 25 mm.",
+		"imageFileName": "IMG_1269.jpg"
+	},
+	{
+		"sku": "CBR1187 - Grön",
+		"batchStock": 1,
+		"stock": 2,
+		"description": "Genomskinlig krackelerad plast med mönstrad yta och försilvrad insida. Diameter 65 mm, bredd 25 mm.",
+		"imageFileName": "IMG_1271.jpg"
+	},
+	{
+		"sku": "CBR1187 - Rosa",
+		"batchStock": 1,
+		"stock": 4,
+		"description": "Genomskinlig krackelerad plast med mönstrad yta och försilvrad insida. Diameter 65 mm, bredd 25 mm.",
+		"imageFileName": "IMG_1270.jpg"
 	},
 
 	{
-		"sku": "CBR1187",
-		"description": "Genomskinlig krackelerad plast med mönstrad yta och försilvrad insida. Diameter 65 mm, bredd 25 mm. Blandade färger.",
-		"batchStock": 3
+		"sku": "cst-stn",
+		"batchStock": 1,
+		"stock": 1,
+		"description": "Infattade stenar av klart och mörkrött glas på silverfärgade kedjor. Längd 50 cm.",
+		"imageFileName": "IMG_1332.JPG"
 	},
-
 	{
-		"sku": "CBR1222",
-		"description": "7-pack ringar i guldfärgad metall och grön eller lila lack. Diameter 65 mm, bredd 2 resp. 5 mm.",
-		"batchStock": 0,
-		"timeRanOut": "2015-06-06"
+		"sku": "cst-flw",
+		"batchStock": 1,
+		"stock": 2,
+		"description": "Målade rosa och lila blommor med lila och mörkröda stenar på antikbehandlad metall. Diameter 50 mm.",
+		"imageFileName": "IMG_1466 2.JPG"
 	},
-
 	{
-		"sku": "CBR1083",
-		"description": "Mjukt format armband i högblank plast. Diameter 60 mm, bredd 30 mm. Blandaded färger.",
-		"batchStock": 2,
-		"timeRanOut": "2015-05-01"
+		"sku": "cst-gmi-rosa",
+		"batchStock": 1,
+		"stock": 2,
+		"description": "8 st. armband av transparent rosa gummi. Diameter 60 mm.",
+		"imageFileName": "IMG_1536.JPG"
 	},
-
 	{
-		"sku": "CNK1255",
-		"description": "Långt halsband med runda plattor av färgad pärlemor. Längd 140 cm. Blandade färger.",
-		"batchStock": 5
+		"sku": "cst-gmi-gul",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "8 st. armband av gult gummi. Diameter 60 mm.",
+		"imageFileName": "IMG_1534.JPG"
 	},
-
 	{
-		"sku": "CBR896",
-		"description": "Silverfärgat armband i präglad eller hamrad metallplåt. Diameter 67 mm, bredd 35mm.",
-		"batchStock": 1
+		"sku": "cst-gmi-vit",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "8 st. armband av vitt gummi. Diameter 60 mm.",
+		"imageFileName": "IMG_1532.JPG"
+	},
+	{
+		"sku": "cst-gmi-svart",
+		"batchStock": 1,
+		"stock": 2,
+		"description": "8 st. armband av svart gummi. Diameter 60 mm.",
+		"imageFileName": "IMG_1538.JPG"
+	},
+	{
+		"sku": "cst-rng",
+		"batchStock": 1,
+		"stock": 3,
+		"description": "17 tunna, guldfärgade armband, flätade i varandra. Diameter 65 mm.",
+		"imageFileName": "IMG_1481.JPG"
 	}
 ]
