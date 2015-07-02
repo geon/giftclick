@@ -16,42 +16,31 @@ head
 	block css
 body
 
-	//- Facebook SDK
-	script.
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId      : '!{fbAppId}',
-				xfbml      : false, // No share buttons etc.
-				version    : 'v2.3',
-				status     : true // Logs in at once.
-			});
-		};
-
-		(function(d, s, id){
-			 var js, fjs = d.getElementsByTagName(s)[0];
-			 if (d.getElementById(id)) {return;}
-			 js = d.createElement(s); js.id = id;
-			 js.src = "//connect.facebook.net/sv_SE/sdk.js";
-			 fjs.parentNode.insertBefore(js, fjs);
-		 }(document, 'script', 'facebook-jssdk'));
-
-	//- .top-bar.logged-in
-	.top-bar
+	//- .header.logged-in
+	.header
 		.new-user
 			if !topLevel
 				a(href='/').back: span.icon.fa-chevron-circle-left
 			.text
 				h1 Är du ny här?
 				p Vi lottar ut presenter. Logga in med ditt Facebook-konto så missar du inga vinster.
-			button (f) Log in
+			button.log-in
+				span.icon.fa-facebook-official
+				| &nbsp;&nbsp;&nbsp;Logga in med Facebook
 
 		.existing-user
 			if !topLevel
 				a(href='/').back: span.icon.fa-chevron-circle-left
 			.text
-				h1 Hej, {{user.name}}!
-				p Du har {{user.klicksLeft}} klick kvar idag.
-			button Log Out
+				h1
+					| Hej, 
+					span.userFirstName ...
+					| !
+				p
+					| Du har 
+					span.userNumClicksLeft
+					|  klick kvar idag.
+			button.log-out &nbsp;&nbsp;&nbsp;Logga ut
 
 	block content
 
@@ -60,7 +49,15 @@ body
 		|  
 		a(href='mailto:info@giftclick.se') kontakt
 
-	//- script(src='/js/vendor/jquery-2.1.3.min.js')
+	script.
+		var fbAppId = '!{fbAppId}';
+	script(src='/js/vendor/jquery-2.1.3.min.js')
+	script(src='/js/vendor/underscore-1.8.3.min.js')
+	script(src='/js/vendor/backbone-1.2.1.min.js')
+	script(src='/js/Header.js')
+	script(src='/js/User.js')
+	script(src='/js/App.js')
+	script(src='/js/main.js')
 	block js
 
 	//- Analytics
