@@ -9,7 +9,7 @@
 @line-height: 1.5em;
 
 @color-cream: #F5F1DF;
-
+@color-facebook: #4E69A2;
 
 
 
@@ -55,8 +55,32 @@
 }
 
 
+.bulging-button(@color, @border-color: darken(@color, 20%), @letterpress-amount: 10%, @inset-shadow: 10%, @bulge: 6%) {
+
+	border-radius: 5px;
+
+	.letterpress(@color);
+	.contrasting-color(@color);
+	background: @color linear-gradient(to top, darken(@color, @bulge), @color, lighten(@color, @bulge));
+	border: 1px solid @border-color;
+	& when (@inset-shadow > 0) {
+		box-shadow: inset 0px 0px 2px 0px darken(@color, @inset-shadow);
+	}
+
+	&:active {
+
+		background: @color;
+	}
+
+	&:focus {
+
+		outline: none;
+	}
+}
+
+
 @import (css) 'cssreset-min.css';
-@import (css) 'font-awesome-4.2.0.min.css';
+@import (css) '../font-awesome-4.3.0/css/font-awesome.min.css';
 
 // Set global font for everything.
 * {
@@ -133,7 +157,7 @@ button {
 
 
 
-.top-bar {
+.header {
 
 	// Fixes the collapsed top margin.
 	display: inline-block;
@@ -187,26 +211,48 @@ button {
 	> .new-user {
 		
 		// p Vi lottar ut presenter. Logga in med ditt Facebook-konto, så missar du inga vinster.
-		button {
+		button.log-in {
 
-			margin: 20px;
+			> span {
+
+				vertical-align: middle;
+
+				&.icon {
+
+					font-size: 1.5em;
+					text-shadow: none;
+				}
+
+				&.caption {
+
+					margin-left: 15px;
+				}
+			}
 		}
 	}
 
-	> .existing-user {
-		// h1 Hej, {{user.name}}!
-		// p Du har {{user.klicksLeft}} klick kvar idag.
+
+	> .new-user > button.log-in,
+	> .existing-user > button.log-out {
+
+		.bulging-button(@color-facebook, desaturate(darken(@color-facebook, 25%), 30%), 20%, 0);
+
+		margin: 20px;
+		margin-left: auto;
+		padding: 0 20px;
+		height: 40px;
+		flex: 0 0 auto;
+		display: inline-block;
+
+		font-size: inherit;
+		white-space: nowrap;
 	}
+
 
 	// Toggling by logged-in class.
-	> .existing-user { display: none; }
-	&.logged-in {
-
-		> .new-user      { display: none; }
-		> .existing-user { display: flex;
-
-			justify-content: flex-start;
-		}
+	&.logged-in > .new-user,
+	&:not(.logged-in) > .existing-user {
+		display: none;
 	}
 }
 
@@ -317,37 +363,13 @@ button {
 
 			border-radius: 5px;
 			font-size: 1.5em;
-			.color (@color) {
-
-				@bulge: 6%;
-				.letterpress(@color);
-				.contrasting-color(@color);
-				background: @color linear-gradient(to top, darken(@color, @bulge), @color, lighten(@color, @bulge));
-				border: 1px solid darken(@color, 20%);
-				& when (luma(@color) > 50%) {
-
-					text-shadow: 0 1px 0 lighten(@color, 10%);
-					box-shadow: inset 0px 0px 2px 0px darken(@color, 10%);
-				}
-
-				&:active {
-
-					background: @color;
-				}
-
-				&:focus {
-
-					outline: none;
-				}
-			}
-
-			.color (@color-cream);
+			.bulging-button(@color-cream);
 			color: desaturate(darken(@color-cream, 30%), 5%);
 
 			&.out-of-stock,
 			&.count-down {
 
-				.color (#f8f8f8);
+				.bulging-button(#f8f8f8);
 				color: #bbb;
 				cursor: not-allowed;
 			}
