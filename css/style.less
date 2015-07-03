@@ -440,7 +440,12 @@ button {
 	p {
 		font-style: italic;
 		color: #888;
-		// text-align: center;
+
+		@media screen and (max-width: 320px) {
+
+			margin-left: 20px;
+			margin-right: 20px;
+		}
 	}
 
 	.image {
@@ -448,12 +453,15 @@ button {
 		width: @image-width;
 		height: @image-height;
 
-		border-radius: 10px;
+		@media screen and (min-width: 321px) {
+
+			border-radius: 10px;
+		}
+
 		box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
 		overflow: hidden;
 
 		position: relative;
-
 		> label {
 
 			position: absolute;
