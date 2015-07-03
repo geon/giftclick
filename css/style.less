@@ -185,16 +185,55 @@ button {
 
 		margin-left: 20px;
 	}
-	
-	> div {
+
+
+	> .new-user,
+	> .existing-user {
+
+		@margin: 20px;
 
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
+		justify-content: space-between;
 
-		.text {
+		@media screen and (max-width: 767px) {
 
-			margin: 0 20px;
+			flex-wrap: wrap;
+
+			> .text {
+
+				max-width: calc(~"100% - @{margin} * 3 - 35px");
+			}
+
+			> button.log-in,
+			> button.log-out {
+
+				display: block;
+				width: calc(~"100% - @{margin} * 2");
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+
+
+			> button.log-in,
+			> button.log-out {
+
+				margin-left: auto;
+			}
+		}
+
+
+		> .icon {
+
+			margin-right: @margin;
+			flex-grow: 0;
+		}
+
+		> .text {
+
+			margin: 0 @margin;
+			flex-grow: 1;
 		}
 
 		h1, p {
@@ -206,11 +245,25 @@ button {
 
 			opacity: .75;
 		}
+
+		> button.log-in,
+		> button.log-out {
+
+			.bulging-button(@color-facebook, desaturate(darken(@color-facebook, 25%), 30%), 20%, 0);
+
+			margin: 20px;
+			padding: 0 20px;
+			height: 40px;
+			flex: 0 0 auto;
+
+			font-size: inherit;
+			white-space: nowrap;
+		}
 	}
+
 
 	> .new-user {
 		
-		// p Vi lottar ut presenter. Logga in med ditt Facebook-konto, så missar du inga vinster.
 		button.log-in {
 
 			> span {
@@ -229,23 +282,6 @@ button {
 				}
 			}
 		}
-	}
-
-
-	> .new-user > button.log-in,
-	> .existing-user > button.log-out {
-
-		.bulging-button(@color-facebook, desaturate(darken(@color-facebook, 25%), 30%), 20%, 0);
-
-		margin: 20px;
-		margin-left: auto;
-		padding: 0 20px;
-		height: 40px;
-		flex: 0 0 auto;
-		display: inline-block;
-
-		font-size: inherit;
-		white-space: nowrap;
 	}
 
 
