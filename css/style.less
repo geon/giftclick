@@ -310,11 +310,18 @@ button {
 
 .overview {
 
-	margin: 0 100px;
+	@media screen and (min-width: 768px) {
+
+		margin: 0 100px;
+	}
 
 	p.instructions {
 
+		@media screen and (max-width: 320px) {
 
+			margin-left: 20px;
+			margin-right: 20px;
+		}
 	}
 
 	> .gifts {
