@@ -30,13 +30,13 @@ var jadeTargets = {
 		},
 		files: [{
 			src: 'index.jade',
-			dest: 'index.html'
+			dest: '../build/index.html'
 		}]
 	},
 	privacyPolicy: {
 		files: [{
 			src: 'privacyPolicy.jade',
-			dest: 'integritetspolicy.html'
+			dest: '../build/integritetspolicy.html'
 		}]
 	}
 };
@@ -54,7 +54,7 @@ giftTypes
 			},
 			files: [{
 				src: 'giftType.jade',
-				dest: 'gifts/'+giftType.sku+'/index.html',
+				dest: '../build/gifts/'+giftType.sku+'/index.html',
 			}]
 		};
 	});
@@ -67,6 +67,20 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 
+		copy: {
+			build: {
+				expand: true,
+				src:[
+					'./css/cssreset-min.css',
+					'./css/noise-3percent.png',
+					'./font-awesome-4.3.0/**',
+					'./gift-images/*',
+					'./js/**'
+				],
+				dest:'../build/'
+			}
+		},
+
 		// running `grunt less` will compile once
 		less: {
 			development: {
@@ -75,8 +89,8 @@ module.exports = function(grunt) {
 					yuicompress: false
 				},
 				files: {
-					'./css/style.css': './css/style.less',
-					'./css/markdown.css': './css/markdown.less'
+					'../build/css/style.css': './css/style.less',
+					'../build/css/markdown.css': './css/markdown.less'
 				}
 			}
 		},
@@ -86,7 +100,7 @@ module.exports = function(grunt) {
 			build: {
 				// expand: true,
 				// cwd: BUILD_DIR,
-				src: ['./css/style.css', './css/markdown.css'],
+				src: ['../build/css/style.css', '../build/css/markdown.css'],
 				// dest: BUILD_DIR
 			}
 		},
@@ -111,6 +125,7 @@ module.exports = function(grunt) {
 		
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-jade');
