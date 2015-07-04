@@ -7,8 +7,8 @@ CREATE TABLE users (
 	"name"        TEXT NOT NULL DEFAULT '',
 	"address"     TEXT NOT NULL DEFAULT '',
 
-	"created"     TIMESTAMPTZ NOT NULL,
-	"lastVisit"   TIMESTAMPTZ NOT NULL
+	"created"     TIMESTAMPTZ NOT NULL
+	-- "lastVisit"   TIMESTAMPTZ NOT NULL -- Pointless. The last created click is better.
 );
 
 
