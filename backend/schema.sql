@@ -1,10 +1,13 @@
 
+BEGIN;
+
 CREATE TABLE users (
 
 	"id"          UUID PRIMARY KEY,
 	"inviteRef"   UUID UNIQUE NOT NULL,
 
-	"name"        TEXT NOT NULL DEFAULT '',
+	"facebookId"  TEXT UNIQUE NOT NULL,
+
 	"address"     TEXT NOT NULL DEFAULT '',
 
 	"created"     TIMESTAMPTZ NOT NULL
@@ -36,7 +39,7 @@ CREATE TABLE clicks (
 
 	"created"     TIMESTAMPTZ NOT NULL
 );
-CREATE INDEX ON clicks ("userId", "giftTypeId");
+CREATE INDEX ON clicks ("userId", "giftTypeSku");
 
 
 CREATE TABLE givenGifts (
@@ -51,4 +54,6 @@ CREATE TABLE givenGifts (
 
 	"created"     TIMESTAMPTZ NOT NULL
 );
-CREATE INDEX ON givenGifts ("userId", "giftTypeId");
+CREATE INDEX ON givenGifts ("userId", "giftTypeSku");
+
+COMMIT;
