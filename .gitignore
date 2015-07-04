@@ -1,5 +1,2 @@
-*.html
-css/markdown.css
-css/style.css
-gifts
+build
 node_modules
