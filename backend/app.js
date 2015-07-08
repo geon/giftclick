@@ -34,9 +34,9 @@ api.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
 });
-api.post('/users/fb/:facebookId/clicks', apiRoutes.postClicks);
 api.get('/users/fb/:facebookId/clicksLeft', apiRoutes.getClicksLeft);
 api.get('/users/fb/:facebookId/lastClickOnGiftType/:giftTypeSku', apiRoutes.getLastClickOnGiftType);
+api.post('/users/fb/:facebookId/lastClickOnGiftType/:giftTypeSku', apiRoutes.postClicks);
 app.use('/api/v1', api);
 
 // catch 404 and forward to error handler
