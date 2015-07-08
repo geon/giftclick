@@ -12,6 +12,8 @@ var GiftButton = Backbone.View.extend({
 
 	initialize: function (options) {
 
+		this.listenTo(this.model, 'change:timeLeft', this.updateDom, this);
+
 		this.updateDom();
 	},
 
