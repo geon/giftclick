@@ -31,7 +31,7 @@ var GiftType = Backbone.Model.extend({
 		this.listenTo(lastClick, 'change:created', this.startCountDown, this);
 
 		// Fetch as soon as user details are available.
-		if (this.get('user').details) {
+		if (this.get('user').get('details')) {
 
 			lastClick.fetch();
 	
