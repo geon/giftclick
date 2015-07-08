@@ -84,7 +84,7 @@ var GiftType = Backbone.Model.extend({
 			return 0;
 		}
 
-		var timeLeft = lastClickTime + 60*60*1000 - new Date().getTime();
+		var timeLeft = lastClickTime.getTime() + 60*60*1000 - new Date().getTime();
 		
 		return Math.max(0, timeLeft);
 	}

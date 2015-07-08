@@ -18,6 +18,18 @@ var Click = Backbone.Model.extend({
 	},
 
 
+	parse: function (response) {
+
+		// Parse the date string into an object.
+		if (response.created) {
+
+			response.created = new Date(response.created);
+		}
+
+		return response;
+	},
+
+
 	url: function() {
 
 		/*
