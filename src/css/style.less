@@ -385,24 +385,8 @@ button {
 				line-height: @height;
 			}
 
-			> span.want {
-				opacity: 1;
-			}
-
-			> span.count-down {
-				opacity: 0;
-			}
-
-			&.count-down {
-
-				> span.want {
-					opacity: 0;
-				}
-
-				> span.count-down {
-					opacity: 1;
-				}
-			}
+			&:not(.count-down) > span.count-down { opacity: 0; }
+			&.count-down > span.want { opacity: 0; }
 
 			border-radius: 5px;
 			font-size: 1.5em;
