@@ -1,4 +1,8 @@
 
+var fbAppId = '1426084277715046';
+// var backendHost = 'backend.giftclick.se:8085';
+var backendHost = 'localhost:8085';
+
 var giftTypes = require('./giftTypes.json')
 	.filter(function (giftType) {
 
@@ -9,8 +13,6 @@ giftTypes.forEach(function (giftType) {
 
 	giftType.batchStock = giftType.stock;
 });
-
-var fbAppId = '1426084277715046';
 
 var adrecordAds = require('./adrecord-ads.json');
 var shuffle = require('shuffle-array');
@@ -25,6 +27,7 @@ var jadeTargets = {
 		options: {
 			data: {
 				fbAppId: fbAppId,
+				backendHost: backendHost,
 				giftTypes: giftTypes
 			}
 		},
@@ -48,6 +51,7 @@ giftTypes
 			options: {
 				data: {
 					fbAppId: fbAppId,
+					backendHost: backendHost,
 					giftType: giftType,
 					adrecordAd: adrecordAds[adrecordAdsIndex++ % adrecordAds.length]
 				}

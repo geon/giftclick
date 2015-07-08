@@ -26,9 +26,17 @@ app.use(cookieParser());
 
 var api = express.Router();
 var apiRoutes = require('./routes/api.js');
+api.use(function(req, res, next) {
+
+	// CORS-headers.
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 api.post('/users/fb/:facebookId/clicks', apiRoutes.postClicks);
 api.get('/users/fb/:facebookId/clicksLeft', apiRoutes.getClicksLeft);
-api.get('/users/fb/:facebookId/lastClickTime/:giftTypeSku', apiRoutes.getLastClickTime);
+api.get('/users/fb/:facebookId/lastClickOnGiftType/:giftTypeSku', apiRoutes.getLastClickOnGiftType);
 app.use('/api/v1', api);
 
 // catch 404 and forward to error handler

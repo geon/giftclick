@@ -1,5 +1,6 @@
 'use strict';
 
+var config = require('../config.js');
 var progres = require('progres'); require('progres-convenience'); require('progres-transaction');
 var tableDefinitions = require('../tableDefinitions.js');
 var sql = require('sql');
@@ -44,14 +45,18 @@ module.exports = {
 			}, function (error) {
 
 				console.error(new Date(), 'Error in getClicksLeft:', error.stack);
-				res.send(500);
+				res.sendStatus(500);
 			});
 	},
 
 
-	getLastClickTime: function (req, res) {
+	getLastClickOnGiftType: function (req, res) {
 
 		progres.transaction(config.connectionString, function (client) {
+
+return {
+	created: new Date()
+};
 
 			return client.selectOne(
 				tableDefinitions.users,
@@ -59,17 +64,17 @@ module.exports = {
 			)
 				.then(function (user) {
 
-					return selectLastClickTime (client, user.id, req.parameters.giftTypeSku);
+					return selectLastClickOnGiftType (client, user.id, req.parameters.giftTypeSku);
 				});
 		})
-			.done(function (lastClickTime) {
+			.done(function (lastClick) {
 
-				res.json(lastClickTime);
+				res.json(lastClick);
 
 			}, function (error) {
 
-				console.error(new Date(), 'Error in getLastClickTime:', error.stack);
-				res.send(500);
+				console.error(new Date(), 'Error in getLastClickOnGiftType:', error.stack);
+				res.sendStatus(500);
 			});		
 	},
 
@@ -133,12 +138,12 @@ module.exports = {
 		})
 			.done(function () {
 
-				res.send(200);
+				res.sendStatus(200);
 
 			}, function (error) {
 
 				console.error(new Date(), 'Error in postClicks:', error.stack);
-				res.send(500);
+				res.sendStatus(500);
 			});
 	}
 };

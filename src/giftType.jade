@@ -20,8 +20,21 @@ block content
 			//- button.want.count-down
 			button(class = 'want' + (!giftType.batchStock ? ' out-of-stock' : ''))
 				span.want Vill ha!
-				span.count-down &#xf017; 59:54
+				span.count-down
+					| &#xf017; 
+					span.timer 59:54
 
 			div.fb-like(data-send='true', data-width='450' data-show-faces='true')
 
 			a.ad(href='http://click.adrecord.com/?p='+adrecordAd.p+'&c=20202&g='+adrecordAd.g+'&epi='+giftType.sku rel='nofollow'): img(src='http://graphics.adrecord.com/20202/'+adrecordAd.p+'/'+adrecordAd.g)
+
+block js
+	script.
+		var giftTypeSku = '!{giftType.sku}';
+	script(src='/js/Click.js')
+	script(src='/js/GiftType.js')
+	script(src='/js/GiftButton.js')
+	script(src='/js/Header.js')
+	script(src='/js/User.js')
+	script(src='/js/App.js')
+	script(src='/js/main.js')
