@@ -11,21 +11,59 @@ var User = Backbone.Model.extend({
 
 	initialize: function () {
 
-		this.listenTo(this, 'change:accessToken', function () {
+		if (document.location.hostname == "localhost") {
 
-			if (this.get('accessToken')) {
+			// Fake login.
 
-				FB.api('/me', function (response) {
+			this._handleStatusResponse({
+				status: 'connected',
+				authResponse: {
+					accessToken: 'foo'
+				}
+			});
+			this.set('details', {
+				first_name: 'Jhonny Appleseed',
+				id: '1337',
+			});
 
-					this.set('details', response);
 
-				}.bind(this));
-			}
+		} else {
 
-		}.bind(this));
+			this.listenTo(this, 'change:accessToken', function () {
+
+				if (this.get('accessToken')) {
+
+					FB.api('/me', function (response) {
+
+						this.set('details', response);
+
+					}.bind(this));
+				}
+
+			}.bind(this));
 
 
-		FB.getLoginStatus(this._handleStatusResponse.bind(this));
+			// Initialize FB SDK.
+			window.fbAsyncInit = function() {
+
+				FB.init({
+					appId      : window.fbAppId,
+					xfbml      : false, // No share buttons etc.
+					version    : 'v2.3',
+					status     : true // Logs in at once.
+				});
+
+				FB.getLoginStatus(this._handleStatusResponse.bind(this));
+
+			}.bind(this);
+			(function(d, s, id){
+				 var js, fjs = d.getElementsByTagName(s)[0];
+				 if (d.getElementById(id)) {return;}
+				 js = d.createElement(s); js.id = id;
+				 js.src = "//connect.facebook.net/sv_SE/sdk.js";
+				 fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		}
 	},
 
 
@@ -41,6 +79,7 @@ var User = Backbone.Model.extend({
 	},
 
 
+/*
 	share: function () {
 
 		// Share dialog
@@ -52,6 +91,7 @@ var User = Backbone.Model.extend({
 			// callback
 		});
 	},
+*/
 
 
 	_handleStatusResponse: function (response) {
