@@ -31,7 +31,7 @@ module.exports = {
 
 			return client.selectOne(
 				tableDefinitions.users,
-				{facebookId: req.parameters.facebookId}
+				{facebookId: req.params.facebookId}
 			)
 				.then(function (user) {
 
@@ -60,11 +60,11 @@ return {
 
 			return client.selectOne(
 				tableDefinitions.users,
-				{facebookId: req.parameters.facebookId}
+				{facebookId: req.params.facebookId}
 			)
 				.then(function (user) {
 
-					return selectLastClickOnGiftType (client, user.id, req.parameters.giftTypeSku);
+					return selectLastClickOnGiftType (client, user.id, req.params.giftTypeSku);
 				});
 		})
 			.done(function (lastClick) {
@@ -85,13 +85,13 @@ return {
 
 			return client.selectOne(
 				tableDefinitions.users,
-				{facebookId: req.parameters.facebookId}
+				{facebookId: req.params.facebookId}
 			)
 				.then(function (user) {
 
 					if (!user) {
 
-						throw new Error('No user with facebookId '+req.parameters.facebookId);
+						throw new Error('No user with facebookId '+req.params.facebookId);
 					}
 
 					return user;
@@ -103,7 +103,7 @@ return {
 
 							if (clicksLeft <= 0) {
 
-								throw new Error('No clicks left for facebookId '+req.parameters.facebookId);
+								throw new Error('No clicks left for facebookId '+req.params.facebookId);
 							}
 
 							return user;
@@ -116,7 +116,7 @@ return {
 
 							if (clicksLeft <= 0) {
 
-								throw new Error('Click early for facebookId, sku '+req.parameters.facebookId+' '+req.body.giftTypeSku);
+								throw new Error('Click early for facebookId, sku '+req.params.facebookId+' '+req.body.giftTypeSku);
 							}
 
 							return user;
