@@ -26,7 +26,6 @@ var User = Backbone.Model.extend({
 				id: '1337',
 			});
 
-
 		} else {
 
 			this.listenTo(this, 'change:accessToken', function () {

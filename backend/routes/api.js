@@ -31,12 +31,14 @@ function selectClicksLeft (client, userId) {
 function selectActiveClickOnGiftType (client, userId, giftTypeSku) {
 
 	var now = new sql.functionCallCreator('NOW');
+	var countDownInterval = tableDefinitions.clicks.literal("INTERVAL '1 hour'");
 
 	return client.queryGenerated(tableDefinitions.clicks
-		.select()
+		.select(tableDefinitions.clicks.star(), now().as('serverTime'))
 		.where(
 			tableDefinitions.clicks.userId.equals(userId),
-			tableDefinitions.clicks.giftTypeSku.equals(giftTypeSku)
+			tableDefinitions.clicks.giftTypeSku.equals(giftTypeSku),
+			tableDefinitions.clicks.created.plus(countDownInterval).gt(now())
 		)
 		.order(tableDefinitions.clicks.created.desc)
 		.limit(1)
@@ -89,6 +91,11 @@ module.exports = {
 				});
 		})
 			.done(function (activeClick) {
+
+				if (!activeClick) {
+
+					return res.sendStatus(404);
+				}
 
 				res.json(activeClick);
 

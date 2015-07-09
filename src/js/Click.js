@@ -2,6 +2,11 @@
 
 var Click = Backbone.Model.extend({
 
+	defaults: {
+		serverTimeDelay: 0
+	},
+
+
 	constructor: function () {
 
 		// Check for required properties.
@@ -26,6 +31,15 @@ var Click = Backbone.Model.extend({
 			response.created = new Date(response.created);
 		}
 
+		// Calculate the client/server time difference.
+		// The client being even a few minutes off could make clicks
+		// drop, since the countdown would finish early.
+		if (response.serverTime) {
+
+			response.serverTimeDelay = new Date().getTime() - new Date(response.serverTime).getTime();
+			delete response.serverTime;
+		}
+
 		// Never PUT an object, but treat all saves as a new one.
 		delete response.id;
 
@@ -44,5 +58,21 @@ var Click = Backbone.Model.extend({
 
 		// Avoids using URL encoding.
 		return 'http://'+window.backendHost+'/api/v1/users/fb/'+this.get('user').get('details').id+'/lastClickOnGiftType/'+this.get('giftTypeSku');
+	},
+
+
+	timeLeft: function () {
+
+		var lastClickTime = this.get('created');
+		var serverTimeDelay = this.get('serverTimeDelay');
+
+		if (!lastClickTime) {
+
+			return 0;
+		}
+
+		var timeLeft = lastClickTime.getTime() - serverTimeDelay + 60*60*1000 - new Date().getTime();
+
+		return Math.max(0, timeLeft);
 	}
 });

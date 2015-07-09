@@ -47,45 +47,46 @@ var GiftType = Backbone.Model.extend({
 
 	want: function () {
 
-		if (this.timeLeft()) {
+		var lastClick = this.get('lastClick');
+
+		if (lastClick.timeLeft()) {
 
 			return;
 		}
 
-		this.get('lastClick').save('created', new Date(), {wait: true});
+		// Send a click, setting the countdown immediately client-side.
+		lastClick.save(
+			{
+				'created': new Date()
+			}
+
+			// Ignoring errors.
+			// TODO: Reset timer if the request fails.
+			// NOTE: JSON parsing *will* fail. check only status code.
+		);
 	},
 
 
 	startCountDown: function () {
 
-		var timer = null;
-		timer = setInterval(function () {
+		var lastClick = this.get('lastClick');
 
-			var timeLeft = this.timeLeft();
+		var timer = null;
+
+		var updateTimeLeft = function () {
+
+			var timeLeft = lastClick.timeLeft();
 			this.set('timeLeft', timeLeft);
 
 			if (!timeLeft) {
 
-				this.get('lastClick').set('created', null);
+				lastClick.set('created', null);
 				clearTimeout(timer);
 			}
 
-		}.bind(this), 1000);
-	},
+		}.bind(this)
 
-
-	timeLeft: function () {
-
-		var lastClick = this.get('lastClick');
-		var lastClickTime = lastClick && lastClick.get('created');
-
-		if (!lastClickTime) {
-
-			return 0;
-		}
-
-		var timeLeft = lastClickTime.getTime() + 60*60*1000 - new Date().getTime();
-		
-		return Math.max(0, timeLeft);
+		timer = setInterval(updateTimeLeft, 1000);
+		updateTimeLeft();
 	}
 });
