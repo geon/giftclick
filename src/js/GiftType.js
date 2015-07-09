@@ -52,7 +52,7 @@ var GiftType = Backbone.Model.extend({
 			return;
 		}
 
-		this.get('lastClick').save('created', new Date());
+		this.get('lastClick').save('created', new Date(), {wait: true});
 	},
 
 
