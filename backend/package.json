@@ -16,6 +16,7 @@
     "progres-convenience": "0.0.1",
     "progres-transaction": "0.0.0",
     "serve-favicon": "~2.2.0",
-    "sql": "^0.52.0"
+    "sql": "^0.52.0",
+    "uuid": "^2.0.1"
   }
 }

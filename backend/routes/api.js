@@ -4,6 +4,7 @@ var config = require('../config.js');
 var progres = require('progres'); require('progres-convenience'); require('progres-transaction');
 var tableDefinitions = require('../tableDefinitions.js');
 var sql = require('sql');
+var uuid = require('uuid');
 
 
 function selectClicksLeft (client, userId) {
@@ -14,14 +15,38 @@ function selectClicksLeft (client, userId) {
 	var now = new sql.functionCallCreator('NOW');
 
 	return client.queryGenerated(tableDefinitions.clicks
-		.select(tableDefinitions.clicks.count().minus(clicksPerDayAllowance))
-		.where(day(tableDefinitions.clicks.created).equals(day(now())))
+		.select(tableDefinitions.clicks.count().as('numClicks'))
+		.where(
+			date(tableDefinitions.clicks.created).equals(date(now())),
+			tableDefinitions.clicks.userId.equals(userId)
+		)
+	)
+		.then(function (rows) {
+
+			return clicksPerDayAllowance - (rows[0] && rows[0].numClicks || 0);
+		});
+}
+
+
+function selectActiveClickOnGiftType (client, userId, giftTypeSku) {
+
+	var now = new sql.functionCallCreator('NOW');
+
+	return client.queryGenerated(tableDefinitions.clicks
+		.select()
+		.where(
+			tableDefinitions.clicks.userId.equals(userId),
+			tableDefinitions.clicks.giftTypeSku.equals(giftTypeSku)
+		)
+		.order(tableDefinitions.clicks.created.desc)
+		.limit(1)
 	)
 		.then(function (rows) {
 
 			return rows[0];
 		});
 }
+
 
 module.exports = {
 
@@ -35,7 +60,7 @@ module.exports = {
 			)
 				.then(function (user) {
 
-					return selectClicksLeft (client, user.id);
+					return selectClicksLeft(client, user.id);
 				});
 		})
 			.done(function (clicksLeft) {
@@ -54,22 +79,18 @@ module.exports = {
 
 		progres.transaction(config.connectionString, function (client) {
 
-return {
-	created: new Date()
-};
-
 			return client.selectOne(
 				tableDefinitions.users,
 				{facebookId: req.params.facebookId}
 			)
 				.then(function (user) {
 
-					return selectLastClickOnGiftType (client, user.id, req.params.giftTypeSku);
+					return selectActiveClickOnGiftType(client, user.id, req.params.giftTypeSku);
 				});
 		})
-			.done(function (lastClick) {
+			.done(function (activeClick) {
 
-				res.json(lastClick);
+				res.json(activeClick);
 
 			}, function (error) {
 
@@ -89,16 +110,22 @@ return {
 			)
 				.then(function (user) {
 
+					// Create the user if it's missing.
+
 					if (!user) {
 
-						throw new Error('No user with facebookId '+req.params.facebookId);
+						return client.insert(tableDefinitions.users, {
+							id: uuid.v4(),
+							inviteRef: uuid.v4(),
+							facebookId: req.params.facebookId,
+						})
 					}
 
 					return user;
 				})
 				.then(function (user) {
 
-					return selectClicksLeft (client, user.id)
+					return selectClicksLeft(client, user.id)
 						.then(function (clicksLeft) {
 
 							if (clicksLeft <= 0) {
@@ -111,12 +138,12 @@ return {
 				})
 				.then(function (user) {
 
-					return selectClicksLeft (client, userId)
-						.then(function (clicksLeft) {
+					return selectActiveClickOnGiftType(client, user.id, req.params.giftTypeSku)
+						.then(function (activeClick) {
 
-							if (clicksLeft <= 0) {
+							if (activeClick) {
 
-								throw new Error('Click early for facebookId, sku '+req.params.facebookId+' '+req.body.giftTypeSku);
+								throw new Error('Click early for facebookId, sku '+req.params.facebookId+' '+req.params.giftTypeSku);
 							}
 
 							return user;
@@ -124,16 +151,10 @@ return {
 				})
 				.then(function (user) {
 
-					var click = {
+					return client.insert(tableDefinitions.clicks, {
 						userId: user.id,
-						giftTypeSku: req.body.giftTypeSku,
-						created: new Date()
-					};
-
-					return client.insert(
-						tableDefinitions.clicks,
-						click
-					);
+						giftTypeSku: req.params.giftTypeSku
+					});
 				});
 		})
 			.done(function () {

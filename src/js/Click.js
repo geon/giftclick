@@ -26,6 +26,9 @@ var Click = Backbone.Model.extend({
 			response.created = new Date(response.created);
 		}
 
+		// Never PUT an object, but treat all saves as a new one.
+		delete response.id;
+
 		return response;
 	},
 

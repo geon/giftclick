@@ -10,7 +10,7 @@ CREATE TABLE users (
 
 	"address"     TEXT NOT NULL DEFAULT '',
 
-	"created"     TIMESTAMPTZ NOT NULL
+	"created"     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 	-- "lastVisit"   TIMESTAMPTZ NOT NULL -- Pointless. The last created click is better.
 );
 
@@ -29,24 +29,24 @@ CREATE TABLE giftTypes (
 	"timeRanOut"  TIMESTAMPTZ DEFAULT NULL, -- When last batch of gifts was run out of. Keep online for a day or so with an "out of stock" sticker.
 	"published"   TIMESTAMPTZ DEFAULT NULL, -- Last time it was published. Used for ordering on overview.
 
-	"created"     TIMESTAMPTZ NOT NULL
+	"created"     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 
 CREATE TABLE clicks (
 
-	"id"          INT PRIMARY KEY,
+	"id"          SERIAL PRIMARY KEY,
 	"userId"      UUID NOT NULL REFERENCES users     (id)  ON DELETE RESTRICT,
 	"giftTypeSku" TEXT NOT NULL REFERENCES giftTypes (sku) ON DELETE RESTRICT,
 
-	"created"     TIMESTAMPTZ NOT NULL
+	"created"     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE INDEX ON clicks ("userId", "giftTypeSku");
 
 
 CREATE TABLE givenGifts (
 
-	"id"          INT PRIMARY KEY,
+	"id"          SERIAL PRIMARY KEY,
 	"userId"      UUID NOT NULL REFERENCES users     (id)  ON DELETE RESTRICT,
 	"giftTypeSku" TEXT NOT NULL REFERENCES giftTypes (sku) ON DELETE RESTRICT,
 
@@ -54,7 +54,7 @@ CREATE TABLE givenGifts (
 	"bonusGiven"  BOOLEAN NOT NULL DEFAULT FALSE,
 	"sent"        BOOLEAN NOT NULL DEFAULT FALSE,
 
-	"created"     TIMESTAMPTZ NOT NULL
+	"created"     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE INDEX ON givenGifts ("userId", "giftTypeSku");
 
