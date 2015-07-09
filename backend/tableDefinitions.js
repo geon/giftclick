@@ -22,6 +22,8 @@ module.exports = {
 		name: 'gifttypes',
 		columns: [
 			"sku",
+			"description",
+			"imageFileName",
 			"stock",
 			"batchStock",
 			"balance",

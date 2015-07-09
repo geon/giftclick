@@ -18,6 +18,8 @@ CREATE TABLE users (
 CREATE TABLE giftTypes (
 
 	"sku"         TEXT PRIMARY KEY,
+	"description" TEXT NOT NULL DEFAULT '',
+	"imageFileName" TEXT NOT NULL DEFAULT '',
 
 	-- TODO: Make an index or something prevent <0.
 	"stock"       INT DEFAULT 0,
