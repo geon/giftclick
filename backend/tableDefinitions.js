@@ -11,7 +11,7 @@ module.exports = {
 		columns: [
 			"id",
 			"inviteRef",
-			"name",
+			"facebookId",
 			"address",
 			"created"
 		]
