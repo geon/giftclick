@@ -44,7 +44,7 @@ module.exports = {
 
 			}, function (error) {
 
-				console.error(new Date(), 'Error in getClicksLeft:', error.stack);
+				console.error(new Date().toString(), 'Error in getClicksLeft:', error.stack);
 				res.sendStatus(500);
 			});
 	},
@@ -73,7 +73,7 @@ return {
 
 			}, function (error) {
 
-				console.error(new Date(), 'Error in getLastClickOnGiftType:', error.stack);
+				console.error(new Date().toString(), 'Error in getLastClickOnGiftType:', error.stack);
 				res.sendStatus(500);
 			});		
 	},
@@ -142,7 +142,7 @@ return {
 
 			}, function (error) {
 
-				console.error(new Date(), 'Error in postClicks:', error.stack);
+				console.error(new Date().toString(), 'Error in postClicks:', error.stack);
 				res.sendStatus(500);
 			});
 	}

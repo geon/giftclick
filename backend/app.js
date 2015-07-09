@@ -51,7 +51,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.end();
-    console.error(new Date(), 'Global error handler.', err.stack);
+    console.error(new Date().toString(), 'Global error handler.', err.stack);
 });
 
 
