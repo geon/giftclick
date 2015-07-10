@@ -57,7 +57,7 @@ var Click = Backbone.Model.extend({
 		*/
 
 		// Avoids using URL encoding.
-		return 'http://'+window.backendHost+'/api/v1/users/fb/'+this.get('user').get('details').id+'/lastClickOnGiftType/'+this.get('giftTypeSku');
+		return 'http://'+window.backendHost+'/api/v1/users/'+this.get('user').id+'/lastClickOnGiftType/'+this.get('giftTypeSku');
 	},
 
 

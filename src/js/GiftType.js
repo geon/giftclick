@@ -30,18 +30,11 @@ var GiftType = Backbone.Model.extend({
 		var lastClick = this.get('lastClick');
 		this.listenTo(lastClick, 'change:created', this.startCountDown, this);
 
-		// Fetch as soon as user details are available.
-		if (this.get('user').get('details')) {
+		// Fetch as soon as user id is available.
+		this.listenTo(this.get('user'), 'change:id', function () {
 
 			lastClick.fetch();
-	
-		} else {
-
-			this.listenTo(this.get('user'), 'change:details', function () {
-
-				lastClick.fetch();
-			});
-		}
+		});
 	},
 
 
@@ -64,6 +57,9 @@ var GiftType = Backbone.Model.extend({
 			// TODO: Reset timer if the request fails.
 			// NOTE: JSON parsing *will* fail. check only status code.
 		);
+
+		// Count down the clicks.
+		this.get('user').set('clicksLeft', this.get('user').get('clicksLeft') - 1);
 	},
 
 

@@ -3,112 +3,55 @@
 var User = Backbone.Model.extend({
 
 	defaults: {
-		status: null,
-		accessToken: null,
-		details: {}
+		firstName: null,
+		loggedIn: false
 	},
 
 
 	initialize: function () {
 
-		if (document.location.hostname == "localhost") {
+		var facebook = this.get('facebook');
+		if (facebook) {
 
-			// Fake login.
+			this.listenTo(facebook, 'change:details', function () {
 
-			this._handleStatusResponse({
-				status: 'connected',
-				authResponse: {
-					accessToken: 'foo'
-				}
-			});
-			this.set('details', {
-				first_name: 'Jhonny Appleseed',
-				id: '1337',
-			});
-
-		} else {
-
-			this.listenTo(this, 'change:accessToken', function () {
-
-				if (this.get('accessToken')) {
-
-					FB.api('/me', function (response) {
-
-						this.set('details', response);
-
-					}.bind(this));
-				}
-
-			}.bind(this));
-
-
-			// Initialize FB SDK.
-			window.fbAsyncInit = function() {
-
-				FB.init({
-					appId      : window.fbAppId,
-					xfbml      : false, // No share buttons etc.
-					version    : 'v2.3',
-					status     : true // Logs in at once.
+				this.set({
+					facebookId: facebook.get('details').id,
+					firstName: facebook.get('details').first_name
 				});
 
-				FB.getLoginStatus(this._handleStatusResponse.bind(this));
+				// Now I have an id to fetch the internal user data by.
+				this.fetch();
 
-			}.bind(this);
-			(function(d, s, id){
-				 var js, fjs = d.getElementsByTagName(s)[0];
-				 if (d.getElementById(id)) {return;}
-				 js = d.createElement(s); js.id = id;
-				 js.src = "//connect.facebook.net/sv_SE/sdk.js";
-				 fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		}
-	},
+			}, this);
 
 
-	logIn: function () {
+			this.listenTo(facebook, 'change:status', function () {
 
-		FB.login(this._handleStatusResponse.bind(this));
-	},
+				this.set({
+					loggedIn: facebook.get('status') == 'connected'
+				});
 
-
-	logOut: function () {
-
-		FB.logout(this._handleStatusResponse.bind(this));
-	},
-
-
-/*
-	share: function () {
-
-		// Share dialog
-		FB.ui({
-			method: 'share',
-			href: location.href,
-		}, function (response) {
-
-			// callback
-		});
-	},
-*/
-
-
-	_handleStatusResponse: function (response) {
-
-		// So the logOut response also works.
-		response = response || {};
-
-		if (response.status === 'connected') {
-
-			// Logged into your app and Facebook.
-
-			this.set('accessToken', response.authResponse.accessToken);
+			}, this);
 
 		} else {
 
-			this.set('accessToken', null);
+			console.error('No auth-provider!');
+		}
+	},
+
+
+	url: function() {
+
+		// Depends on auth-provider used.
+
+		var facebookId = this.get('facebookId');
+		if (facebookId) {
+
+			return 'http://'+window.backendHost+'/api/v1/users/fb/'+facebookId;
 		}
 
-		this.set('status', response.status);
-	}
+		console.log('Why The H*** are you fetching without an auth-provider?');
+		return null;
+	},
 });

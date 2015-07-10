@@ -2,7 +2,8 @@
 
 function App () {
 
-	this.user = new User();
+	this.facebook = new Facebook();
+	this.user = new User({facebook: this.facebook});
 
 	this.header = new Header({
 		model: this.user

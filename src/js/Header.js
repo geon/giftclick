@@ -33,7 +33,8 @@ var Header = Backbone.View.extend({
 
 	updateDom: function () {
 
-		this.$el.toggleClass('logged-in', this.model.get('status') == 'connected');
-		this.$el.find('span.userFirstName').text(this.model.get('details').first_name);
+		this.$el.toggleClass('logged-in', !!this.model.get('loggedIn'));
+		this.$el.find('span.userFirstName').text(this.model.get('firstName'));
+		this.$el.find('span.userNumClicksLeft').text(this.model.get('clicksLeft'));
 	}
 });

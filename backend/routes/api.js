@@ -52,62 +52,9 @@ function selectActiveClickOnGiftType (client, userId, giftTypeSku) {
 
 module.exports = {
 
-	getClicksLeft: function (req, res) {
+	getUser: function (req, res) {
 
-		progres.transaction(config.connectionString, function (client) {
-
-			return client.selectOne(
-				tableDefinitions.users,
-				{facebookId: req.params.facebookId}
-			)
-				.then(function (user) {
-
-					return selectClicksLeft(client, user.id);
-				});
-		})
-			.done(function (clicksLeft) {
-
-				res.json(clicksLeft);
-
-			}, function (error) {
-
-				console.error(new Date().toString(), 'Error in getClicksLeft:', error.stack);
-				res.sendStatus(500);
-			});
-	},
-
-
-	getLastClickOnGiftType: function (req, res) {
-
-		progres.transaction(config.connectionString, function (client) {
-
-			return client.selectOne(
-				tableDefinitions.users,
-				{facebookId: req.params.facebookId}
-			)
-				.then(function (user) {
-
-					return selectActiveClickOnGiftType(client, user.id, req.params.giftTypeSku);
-				});
-		})
-			.done(function (activeClick) {
-
-				if (!activeClick) {
-
-					return res.sendStatus(404);
-				}
-
-				res.json(activeClick);
-
-			}, function (error) {
-
-				console.error(new Date().toString(), 'Error in getLastClickOnGiftType:', error.stack);
-				res.sendStatus(500);
-			});		
-	},
-
-
-	postClicks: function (req, res) {
+		// TODO: Authoriztion!
 
 		progres.transaction(config.connectionString, function (client) {
 
@@ -135,31 +82,74 @@ module.exports = {
 					return selectClicksLeft(client, user.id)
 						.then(function (clicksLeft) {
 
-							if (clicksLeft <= 0) {
-
-								throw new Error('No clicks left for facebookId '+req.params.facebookId);
-							}
+							user.clicksLeft = clicksLeft;
 
 							return user;
 						});
-				})
-				.then(function (user) {
+				});
+		})
+			.done(function (user) {
 
-					return selectActiveClickOnGiftType(client, user.id, req.params.giftTypeSku)
+				res.json(user);
+
+			}, function (error) {
+
+				console.error(new Date().toString(), 'Error in getUser:', error.stack);
+				res.sendStatus(500);
+			});
+	},
+
+
+	getLastClickOnGiftType: function (req, res) {
+
+		progres.transaction(config.connectionString, function (client) {
+
+			return selectActiveClickOnGiftType(client, req.params.userId, req.params.giftTypeSku);
+		})
+			.done(function (activeClick) {
+
+				if (!activeClick) {
+
+					return res.sendStatus(404);
+				}
+
+				res.json(activeClick);
+
+			}, function (error) {
+
+				console.error(new Date().toString(), 'Error in getLastClickOnGiftType:', error.stack);
+				res.sendStatus(500);
+			});		
+	},
+
+
+	postClicks: function (req, res) {
+
+		progres.transaction(config.connectionString, function (client) {
+
+			return selectClicksLeft(client, req.params.userId)
+				.then(function (clicksLeft) {
+
+					if (clicksLeft <= 0) {
+
+						throw new Error('No clicks left for userId '+req.params.userId);
+					}
+				})
+				.then(function () {
+
+					return selectActiveClickOnGiftType(client, req.params.userId, req.params.giftTypeSku)
 						.then(function (activeClick) {
 
 							if (activeClick) {
 
-								throw new Error('Click early for facebookId, sku '+req.params.facebookId+' '+req.params.giftTypeSku);
+								throw new Error('Click early for userId, sku '+req.params.userId+' '+req.params.giftTypeSku);
 							}
-
-							return user;
 						});
 				})
-				.then(function (user) {
+				.then(function () {
 
 					return client.insert(tableDefinitions.clicks, {
-						userId: user.id,
+						userId: req.params.userId,
 						giftTypeSku: req.params.giftTypeSku
 					});
 				});
