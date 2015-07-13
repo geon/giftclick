@@ -6,5 +6,6 @@
 // http://stackoverflow.com/questions/11131197/undo-git-update-index-skip-worktree
 
 module.exports = {
-	connectionString: 'postgres://username:password@localhost:5432/giftclick'
+	connectionString: 'postgres://username:password@localhost:5432/giftclick',
+	adminPassword: 'password'
 };

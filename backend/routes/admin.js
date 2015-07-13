@@ -6,9 +6,10 @@ var progres = require('progres-convenience');
 var tableDefinitions = require('../tableDefinitions.js');
 var sql = require('sql');
 var _ = require('underscore')._;
-
+var basicAuth = require('basic-auth-connect');
 
 var router = express.Router();
+router.use(basicAuth('admin', config.adminPassword));
 module.exports = router;
 
 
