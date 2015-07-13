@@ -1,0 +1,25 @@
+extends layout
+
+block vars
+	//- - varToSetForLayout = null;
+
+block content
+	h1 Priser
+
+	ul.days
+		each day in days
+			li
+				h2= day.date
+				ul.winners
+					each winner in day.winners
+						li
+							img(src='http://giftclick.se/gift-images/'+winner.giftTypeImageFileName)
+							p: b= winner.giftTypeSku
+							p
+								each line in winner.address.split("\n")
+									= line
+									br
+
+block js
+	//- script.
+		js here...
