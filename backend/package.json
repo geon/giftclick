@@ -12,6 +12,7 @@
     "debug": "~2.1.1",
     "express": "~4.10.6",
     "jade": "~1.8.2",
+    "less": "^1.7.5",
     "morgan": "~1.5.1",
     "progres": "0.0.0",
     "progres-convenience": "0.0.1",

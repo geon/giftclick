@@ -1,0 +1,43 @@
+extends layout
+
+block vars
+	//- - varToSetForLayout = null;
+
+block content
+	h1 Publicera
+
+	ul.gift-types
+		each giftType in giftTypes
+			li
+				img(src='http://giftclick.se/gift-images/'+giftType.imageFileName)
+				p: b
+					= giftType.sku
+					| , Lager: 
+					= giftType.stock
+					|  (
+					= giftType.batchStock
+					| )
+				form.form-inline(method='POST')
+					input(type='hidden' name='sku' value=giftType.sku)
+					.input-group
+						input.form-control(name='amount' value=Math.min(3, giftType.stock-giftType.batchStock))
+						span.input-group-btn
+							button.btn.btn-default(type='submit') Publicera
+
+block css
+	style
+		:less
+			ul.gift-types > li {
+				margin-bottom: 100px;
+				img {
+					width: 320px;
+				}
+
+				.input-group {
+					width: 130px;
+				}
+			}
+
+block js
+	//- script.
+		js here...

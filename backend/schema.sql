@@ -38,10 +38,13 @@ CREATE TABLE clicks (
 	"id"          SERIAL PRIMARY KEY,
 	"userId"      UUID NOT NULL REFERENCES users     (id)  ON DELETE RESTRICT,
 	"giftTypeSku" TEXT NOT NULL REFERENCES giftTypes (sku) ON DELETE RESTRICT,
+	"counted"     BOOLEAN NOT NULL DEFAULT FALSE,
 
 	"created"     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
-CREATE INDEX ON clicks ("userId", "giftTypeSku");
+CREATE INDEX ON clicks ("userId");
+CREATE INDEX ON clicks ("giftTypeSku");
+CREATE INDEX ON clicks ("counted");
 
 
 CREATE TABLE givenGifts (
@@ -50,8 +53,8 @@ CREATE TABLE givenGifts (
 	"userId"      UUID NOT NULL REFERENCES users     (id)  ON DELETE RESTRICT,
 	"giftTypeSku" TEXT NOT NULL REFERENCES giftTypes (sku) ON DELETE RESTRICT,
 
-	"bonusCode"   TEXT NOT NULL UNIQUE,
-	"bonusGiven"  BOOLEAN NOT NULL DEFAULT FALSE,
+	-- "bonusCode"   TEXT NOT NULL UNIQUE,
+	-- "bonusGiven"  BOOLEAN NOT NULL DEFAULT FALSE,
 	"sent"        BOOLEAN NOT NULL DEFAULT FALSE,
 
 	"created"     TIMESTAMPTZ NOT NULL DEFAULT NOW()

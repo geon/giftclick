@@ -4,7 +4,7 @@ block vars
 	//- - varToSetForLayout = null;
 
 block content
-	h1 Priser
+	h1 Vinnare
 
 	ul.days
 		each day in days
@@ -19,6 +19,17 @@ block content
 								each line in winner.address.split("\n")
 									= line
 									br
+
+block css
+	style
+		:less
+			ul.winners > li {
+				margin-bottom: 100px;
+
+				img {
+					width: 320px;
+				}
+			}
 
 block js
 	//- script.

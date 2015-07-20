@@ -1,0 +1,38 @@
+extends layout
+
+block vars
+	//- - varToSetForLayout = null;
+
+block content
+	h1 Presenter
+
+	ul.gift-types
+		each giftType in giftTypes
+			li
+				img(src='http://giftclick.se/gift-images/'+giftType.imageFileName)
+				p: b
+					= giftType.sku
+					| , Lager: 
+					= giftType.stock
+					|  (
+					= giftType.batchStock
+					| ), Klick: 
+					= giftType.numClicks
+				form(method='POST')
+					input(type='hidden' name='sku' value=giftType.sku)
+					button.btn.btn-default(type='submit') Lotta ut
+
+block css
+	style
+		:less
+			ul.gift-types > li {
+				margin-bottom: 100px;
+
+				img {
+					width: 320px;
+				}
+			}
+
+block js
+	//- script.
+		js here...

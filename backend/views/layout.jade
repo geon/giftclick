@@ -7,14 +7,18 @@ head
 	link(rel='stylesheet', href='/css/bootstrap.min.css')
 	link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
 	block css
-	script(src='/js/bootstrap.min.js')
+	//- script(src='/js/bootstrap.min.js')
 body
 
 	div.container-fixed
 		div.navbar.navbar-inverse.navbar-top
 			div.container
 				ul.nav.navbar-nav
-					li: a(href='/') Priser
+					li: a(href='/publishGifts') Publicera
+				ul.nav.navbar-nav
+					li: a(href='/giveGifts') Lotta ut
+				ul.nav.navbar-nav
+					li: a(href='/') Vinnare
 
 					//- li.dropdown
 						a.dropdown-toggle(href="#", data-toggle="dropdown") Titles
