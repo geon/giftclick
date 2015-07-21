@@ -169,7 +169,10 @@ router.post('/publishGifts', function (req, res) {
 	progres.connect(config.connectionString, function (client) {
 
 		return client.queryGenerated(tableDefinitions.giftTypes
-			.update({batchStock: tableDefinitions.giftTypes.batchStock.plus(req.body.amount)})
+			.update({
+				batchStock: tableDefinitions.giftTypes.batchStock.plus(req.body.amount),
+				published: now()
+			})
 			.where(tableDefinitions.giftTypes.sku.equals(req.body.sku))
 		);
 	})
