@@ -3,11 +3,7 @@ var fbAppId = '1426084277715046';
 // var backendHost = 'backend.giftclick.se:8085';
 var backendHost = 'localhost:8085';
 
-var giftTypes = require('./giftTypes.json')
-	.filter(function (giftType) {
-
-		return (giftType.stock && giftType.batchStock) || new Date(giftType.timeRanOut) > new Date(new Date().getTime() - 2*24*3600*1000);
-	});
+var giftTypes = require('./giftTypes.json');
 
 giftTypes.sort(function (a, b) {
 
@@ -28,7 +24,10 @@ var jadeTargets = {
 			data: {
 				fbAppId: fbAppId,
 				backendHost: backendHost,
-				giftTypes: giftTypes
+				giftTypes: giftTypes.filter(function (giftType) {
+
+					return (giftType.stock && giftType.batchStock) || new Date(giftType.timeRanOut) > new Date(new Date().getTime() - 2*24*3600*1000);
+				})
 			}
 		},
 		files: [{
