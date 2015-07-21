@@ -143,7 +143,11 @@ router.get('/publishGifts', function (req, res) {
 		return client.queryGenerated(tableDefinitions.giftTypes
 			.select()
 			.where(tableDefinitions.giftTypes.stock.minus(tableDefinitions.giftTypes.batchStock).gt(0))
-			.order(tableDefinitions.giftTypes.timeRanOut)
+			.order(
+				tableDefinitions.giftTypes.batchStock,
+				tableDefinitions.giftTypes.timeRanOut,
+				tableDefinitions.giftTypes.published
+			)
 		);
 	})
 		.done(function (giftTypes) {
