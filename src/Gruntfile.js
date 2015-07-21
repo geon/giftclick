@@ -9,9 +9,9 @@ var giftTypes = require('./giftTypes.json')
 		return (giftType.stock && giftType.batchStock) || new Date(giftType.timeRanOut) > new Date(new Date().getTime() - 2*24*3600*1000);
 	});
 
-giftTypes.forEach(function (giftType) {
+giftTypes.sort(function (a, b) {
 
-	giftType.batchStock = giftType.stock;
+	return new Date(b.published).getTime() - new Date(a.published).getTime();
 });
 
 var adrecordAds = require('./adrecord-ads.json');
