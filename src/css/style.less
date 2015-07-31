@@ -278,9 +278,53 @@ button {
 	}
 
 
-	// Toggling by logged-in class.
+	.address {
+
+		margin: 20px;
+		text-align: right;
+
+		p {
+
+			text-align: left;
+		}
+
+		textarea {
+
+			width: 100%;
+			height: 66px;
+			margin-top: 3px;
+			padding: 5px 10px;
+
+			border: none;
+			border-radius: 2px;
+
+			&:focus {
+
+				outline: none;
+			}
+		}
+
+		button {
+
+			.bulging-button(#eee);
+			margin-top: 10px;
+			padding: 0 20px;
+			height: 30px;
+			font-size: inherit;
+			border: none;
+		}
+	}
+
+
+	// Toggling log in/out.
 	&.logged-in > .new-user,
 	&:not(.logged-in) > .existing-user {
+		display: none;
+	}
+
+	// Toggling change address field.
+	&:not(.logged-in) > .address,
+	&.has-address > .address {
 		display: none;
 	}
 }

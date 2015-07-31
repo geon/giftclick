@@ -4,7 +4,8 @@ var User = Backbone.Model.extend({
 
 	defaults: {
 		firstName: null,
-		loggedIn: false
+		loggedIn: false,
+		hasAddress: true
 	},
 
 
@@ -17,7 +18,8 @@ var User = Backbone.Model.extend({
 
 				this.set({
 					facebookId: facebook.get('details').id,
-					firstName: facebook.get('details').first_name
+					firstName: facebook.get('details').first_name,
+					fullName: facebook.get('details').name
 				});
 
 				// Now I have an id to fetch the internal user data by.
