@@ -13,20 +13,33 @@ var Facebook = Backbone.Model.extend({
 
 		if (document.location.hostname == "localhost") {
 
-			// Fake login. Async...
+			// Fake login.
 
-			setTimeout(function () {
+			this.logIn = function () {
 
 				this._handleStatusResponse({
 					status: 'connected',
 					authResponse: {
-						accessToken: 'foo'
+						accessToken: 'debug'
 					}
 				});
 				this.set('details', {
-					first_name: 'Jhonny Appleseed',
+					first_name: 'Jhonny',
+					name: 'Jhonny Appleseed',
 					id: '1337',
 				});
+			}
+
+			this.logOut = function () {
+
+				this._handleStatusResponse({
+					status: null
+				});
+			}
+
+			setTimeout(function () {
+
+				this.logIn();
 
 			}.bind(this), 0);
 
