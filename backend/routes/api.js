@@ -6,6 +6,8 @@ var progres = require('progres'); require('progres-convenience'); require('progr
 var tableDefinitions = require('../tableDefinitions.js');
 var sql = require('sql');
 var uuid = require('uuid');
+var Q = require('q');
+var qhttp = require('q-io/http');
 
 
 var api = express.Router();
@@ -70,6 +72,47 @@ api.get('/users/fb/:facebookId', function (req, res) {
 		}, function (error) {
 
 			console.error(new Date().toString(), 'Error in getUser:', error.stack);
+			res.sendStatus(500);
+		});
+});
+
+
+api.put('/users/fb/:facebookId', function (req, res) {
+
+	// For debugging. Just pretend it worked.
+	if (req.body.facebookAccessToken == 'debug') {
+
+		return res.end();
+	}
+
+
+	qhttp.read('https://graph.facebook.com/v2.3/me?access_token='+req.body.facebookAccessToken)
+		.then(JSON.parse)
+		.then(function (user) {
+
+			if (user.id != req.params.facebookId) {
+
+				throw new Error('Wrong user logged in.');
+			}
+		})
+		.then(function () {
+
+			return progres.transaction(config.connectionString, function (client) {
+
+				return client.update(
+					tableDefinitions.users,
+					{facebookId: req.params.facebookId},
+					{address: req.body.address}
+				);
+			});
+		})
+		.done(function (user) {
+
+			res.json(user);
+
+		}, function (error) {
+
+			console.error(new Date().toString(), 'Error in putUser:', error.stack);
 			res.sendStatus(500);
 		});
 });
