@@ -24,8 +24,6 @@ api.use(function (req, res, next) {
 
 api.get('/users/fb/:facebookId', function (req, res) {
 
-	// TODO: Authoriztion!
-
 	progres.transaction(config.connectionString, function (client) {
 
 		return client.selectOne(
@@ -58,6 +56,13 @@ api.get('/users/fb/:facebookId', function (req, res) {
 					});
 			});
 	})
+		.then(function (user) {
+
+			// Remove sensitive data.
+			user.hasAddress = !!user.address;
+			delete user.address;
+			return user;
+		})
 		.done(function (user) {
 
 			res.json(user);
