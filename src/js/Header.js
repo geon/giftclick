@@ -21,13 +21,13 @@ var Header = Backbone.View.extend({
 
 	onLogInButtonClicked: function () {
 
-		this.model.logIn();
+		this.model.get('facebook').logIn();
 	},
 
 
 	onLogOutButtonClicked: function () {
 
-		this.model.logOut();
+		this.model.get('facebook').logOut();
 	},
 
 
