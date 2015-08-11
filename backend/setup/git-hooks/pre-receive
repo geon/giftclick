@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Any error should exit.
+set -e
+
+# Headline. With Color!
+echo -e "\n\033[1;32m-=#=- Deploying! -=#=-\033[0m\n"
+
+# Show the db schema changes. On initial commit, oldrev is all 0s.
+read oldrev newrev refname
+if [ "0" == $(expr "$oldrev" : "0*$") ]; then
+
+	setupChanges=$(git diff --color $oldrev $newrev -- setup)
+	if [[ -n $setupChanges ]]; then
+		echo -e "\n\033[1;31m - Changes to setup folder - Schema changes require manual ALTER TABLE! - \033[0m\n"
+		echo -e "$setupChanges"
+	fi
+
+	configChanges=$(git diff --color $oldrev $newrev -- config.js)
+	if [[ -n $schemaChanges ]]; then
+		echo -e "\n\033[1;31m - Changes to config.js - The file has not been updated. Update manually! - \033[0m\n"
+		echo -e "$schemaChanges" 
+	fi
+	
+fi

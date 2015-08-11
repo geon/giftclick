@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Stop the service
+sudo stop giftclick
+
+# Stash the local config, so it won't be overwritten.
+mv ../giftclick/config.js ../giftclick/config.js.local
+
+# Update the files.
+git --work-tree=../giftclick checkout -f master
+
+# Un-stash the local config, in case it was overwritten.
+mv ../giftclick/config.js.local ../giftclick/config.js
+
+# Install any new dependencies.
+cd ../giftclick
+npm install
+
+# Start the service.
+sudo start giftclick
